@@ -13,14 +13,15 @@ const Landing = () => (
         <p className="legend">Gaga gets 'cheeky' in London!</p>
       </div>
       <div>
-        <img src="https://i.ytimg.com/vi/lGkqNVrgFWE/maxresdefault.jpg" />
-        <p className="legend">Slayler Swift!!</p>
+        <img src="https://images.unsplash.com/photo-1449748040579-354c191a7934?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
+        <p className="legend"> Swift's spectacular Sunday in Sydney!!</p>
       </div>
       <div>
         <img src="https://i.ytimg.com/vi/lGkqNVrgFWE/maxresdefault.jpg" />
         <p className="legend">Slaylena Gomez!!</p>
       </div>
     </Carousel>
+    <hr />
     {/* This next section is for the cards below the banner */}
     <Card.Group itemsPerRow={3}>
       <Card
@@ -30,6 +31,7 @@ const Landing = () => (
         description={[
           "Legs 5 inches longer than Naomi Smalls With the modelling capabilities of Raja the Gemini A waist 3 inches smaller than Violet Chachki I give you... Slaytina!"
         ].join("")}
+        // the .join in this was for the original way the text had to be input. Evey line had to be a seperate literal and divided by comma's to avoid putting on a single line
       />
       <Card
         link
@@ -49,6 +51,7 @@ const Landing = () => (
         ].join("")}
       />
     </Card.Group>
+    <hr />
   </div>
 );
 
