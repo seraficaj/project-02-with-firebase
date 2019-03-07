@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../Session';
 import './main.css';
-import firebase from 'firebase/app';
 import Cities from './Cities/Cities';
 import PostDashboard from './PostDashboard/PostDashboard';
+import { withFirebase } from '../Firebase';
 
 class Main extends Component {
   state = {
@@ -43,4 +43,5 @@ class Main extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(Main);
+export default withFirebase(Main);
+// export default withAuthorization(condition)(Main);
