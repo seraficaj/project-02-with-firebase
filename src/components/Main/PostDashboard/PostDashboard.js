@@ -11,7 +11,10 @@ class PostDashboard extends Component {
         return (
             <div id='post-dashboard'>
                 <h1>Post Dashboard</h1>
-                <PostForm currentCityId={this.props.currentCityId}/>
+                <PostForm 
+                  currentCityId={this.props.currentCityId} 
+                  handleInput={this.props.handleInput}
+                  />
                 <PostHeader />
                 <PostList />
             </div>

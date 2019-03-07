@@ -34,6 +34,7 @@ class Main extends Component {
     />
     <PostDashboard 
       currentCityId={this.state.currentCityId}
+      handleInput={this.handleInput}
     />
   </div>
     )
@@ -43,5 +44,5 @@ class Main extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withFirebase(Main);
-// export default withAuthorization(condition)(Main);
+// export default withFirebase(Main);
+export default withAuthorization(condition)(Main);
