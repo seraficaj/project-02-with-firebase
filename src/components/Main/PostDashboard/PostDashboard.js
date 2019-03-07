@@ -4,6 +4,7 @@ import './PostDashboard.css';
 import PostForm from './PostForm/PostForm';
 import PostHeader from './PostHeader/PostHeader';
 import PostList from './PostList/PostList';
+import { withFirebase } from '../../Firebase';
 
 class PostDashboard extends Component {
     render () {
@@ -20,4 +21,5 @@ class PostDashboard extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(PostDashboard);
+export default withFirebase(PostDashboard);
+// export default withAuthorization(condition)(PostDashboard);
