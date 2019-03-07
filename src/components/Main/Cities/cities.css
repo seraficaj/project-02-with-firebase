@@ -1,0 +1,8 @@
+#cities {
+    width: 48%;
+    height: 97%;
+    border: 4px solid blue;
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+}

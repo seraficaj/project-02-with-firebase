@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { withAuthorization } from '../../Session';
+import './PostDashboard.css';
+import PostForm from './PostForm/PostForm';
+import PostHeader from './PostHeader/PostHeader';
+import PostList from './PostList/PostList';
 
 class PostDashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
-  }
-  render() { 
-    return ( 
-      <h1>PostDashboard</h1>
-    );
-  }
+    render () {
+        return (
+            <div id='post-dashboard'>
+                <h1>Post Dashboard</h1>
+                <PostForm currentCityId={this.props.currentCityId}/>
+                <PostHeader />
+                <PostList />
+            </div>
+        )
+    }
 }
- 
-export default PostDashboard;
+
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(PostDashboard);
