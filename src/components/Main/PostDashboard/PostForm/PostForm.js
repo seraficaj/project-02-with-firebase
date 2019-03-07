@@ -16,15 +16,12 @@ class PostForm extends Component {
         console.log(newPostId);
         firebase.database().ref(`post/${newPostId}`).update({title: this.state.title,
                                                             comments: this.state.comments,
-                                                            cityId: this.cityId});
+                                                            cityId: this.props.currentCityId});
         // postdb.push().set({title: this.state.title, 
         //             comments: this.state.comments, 
         //             cityId: this.cityId});
         // console.log(postdb.push().key);
     }
-
-    cityId = this.props.currentCityId
-
     handleInput = (e) => {
         this.setState({ 
             [e.target.name]: e.target.value 
@@ -41,7 +38,6 @@ class PostForm extends Component {
                 <form>
                     <input type='text' placeholder='Title' name='title' onChange={this.handleInput}/>
                     <input type='text' placeholder='Comments' name='comments' onChange={this.handleInput}/>
-                    <input type='text' name='userId' />
                     <button type="submit" onClick={this.testPost}>Submit</button>
                 </form>
             </div>

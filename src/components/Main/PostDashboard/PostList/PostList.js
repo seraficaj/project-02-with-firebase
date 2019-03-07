@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../../../Session';
+import firebase from 'firebase';
 import './PostList.css';
 import Post from './Post/Post'
 
