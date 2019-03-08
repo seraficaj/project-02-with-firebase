@@ -3,6 +3,7 @@ import { withAuthorization } from '../Session';
 import Cities from './Cities/Cities';
 import PostDashboard from './PostDashboard/PostDashboard';
 import firebase from 'firebase';
+import {Grid} from 'semantic-ui-react';
 
 class Main extends Component {
   state = {

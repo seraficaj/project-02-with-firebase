@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../../Session';
-
 import PostForm from './PostForm/PostForm';
 import PostHeader from './PostHeader/PostHeader';
 import PostList from './PostList/PostList';
