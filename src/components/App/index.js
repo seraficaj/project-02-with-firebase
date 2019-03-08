@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-=======
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
->>>>>>> 38bd72bf8252b184d9c82912c716951a337c174f
+import { Container } from "semantic-ui-react";
 
 import Navigation from "../Navigation";
 import LandingPage from "../Landing";

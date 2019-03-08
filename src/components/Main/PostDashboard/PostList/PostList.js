@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Segment, Item, Icon, List, Button } from "semantic-ui-react";
 import { withAuthorization } from "../../../Session";
 import Post from "./Post/Post";
+import Grid from "semantic-ui-react";
 
 class PostList extends Component {
   render() {
