@@ -1,17 +1,7 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
+import { Segment, Item, Icon, List, Button } from "semantic-ui-react";
 import { withAuthorization } from "../../../Session";
-import "./PostList.css";
 import Post from "./Post/Post";
-import { Grid, Button } from "semantic-ui-react";
-import cuid from "cuid";
-import PostList from "../PostList/PostList";
-import PostForm from "../PostForm/PostForm";
-=======
-import React, { Component } from 'react';
-import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
-import { withAuthorization } from '../../../Session';
-import Post from './Post/Post';
 
 class PostList extends Component {
   render() {
@@ -65,7 +55,6 @@ class PostList extends Component {
     );
   }
 }
->>>>>>> 2e066d951652ed030c9b8fe183983767ee0c894e
 
 const condition = authUser => !!authUser;
 const postsDashboard = [
