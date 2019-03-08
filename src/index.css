@@ -2,24 +2,6 @@ body {
   background-color: rgb(234, 234, 234) !important;
 }
 
-/*timepicker style*/
-.react-datepicker__time-container
-  .react-datepicker__time
-  .react-datepicker__time-box
-  ul.react-datepicker__time-list {
-  padding-left: 0;
-  padding-right: 0;
-  width: 100px;
-}
-
-.react-datepicker__input-container {
-  width: inherit;
-}
-
-.react-datepicker-wrapper {
-  width: 100%;
-}
-
 /*home page styles*/
 
 .masthead {
@@ -99,11 +81,4 @@ body {
 
 .ui.menu:not(.vertical) .item > .button {
   margin-left: 0.5em;
-}
-
-/*chat comments*/
-
-.ui.comments .comment .comments {
-  padding-bottom: 0 !important;
-  padding-left: 2em !important;
 }
