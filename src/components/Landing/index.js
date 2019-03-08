@@ -1,13 +1,13 @@
-import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-import { Card } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
-import "./Landing.css";
+import React from 'react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
+import { Card } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import './Landing.css';
 
 const Landing = () => (
   <div>
-    <Carousel autoPlay infiniteLoop transitionTime={500}>
+    <Carousel autoPlay infiniteLoop transitionTime={500} useKeyboardArrows>
       <div>
         <img src="https://m.theepochtimes.com/assets/uploads/2015/06/10/CheekToCheek_03.jpg" />
         <p className="legend">Gaga gets 'cheeky' in London!</p>
@@ -29,8 +29,8 @@ const Landing = () => (
         header="Slaytina"
         meta="The $7 Billion Woman"
         description={[
-          "Legs 5 inches longer than Naomi Smalls With the modelling capabilities of Raja the Gemini A waist 3 inches smaller than Violet Chachki I give you... Slaytina!"
-        ].join("")}
+          'Legs 5 inches longer than Naomi Smalls With the modelling capabilities of Raja the Gemini A waist 3 inches smaller than Violet Chachki I give you... Slaytina!'
+        ].join('')}
         // the .join in this was for the original way the text had to be input. Evey line had to be a seperate literal and divided by comma's to avoid putting on a single line
       />
       <Card
@@ -38,17 +38,17 @@ const Landing = () => (
         header="Rick Sanchez"
         meta="Scientist"
         description={[
-          "Rick is a genius scientist whose alcoholism and reckless,",
-          " nihilistic behavior are a source of concern for his family."
-        ].join("")}
+          'Rick is a genius scientist whose alcoholism and reckless,',
+          ' nihilistic behavior are a source of concern for his family.'
+        ].join('')}
       />
       <Card
         link
         header="Slaytina"
         meta="The $7 Billion Woman"
         description={[
-          "Legs 5 inches longer than Naomi Smalls With the modelling capabilities of Raja the Gemini A waist 3 inches smaller than Violet Chachki I give you... Slaytina!"
-        ].join("")}
+          'Legs 5 inches longer than Naomi Smalls With the modelling capabilities of Raja the Gemini A waist 3 inches smaller than Violet Chachki I give you... Slaytina!'
+        ].join('')}
       />
     </Card.Group>
     <hr />
