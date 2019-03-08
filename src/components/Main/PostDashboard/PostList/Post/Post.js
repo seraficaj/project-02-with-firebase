@@ -12,7 +12,7 @@ class Post extends Component {
               <Item.Image
                 size="tiny"
                 circular
-                src="https://randomuser.me/api/portraits/men/20.jpg"
+                src="https://randomuser.me/api/portraits/women/42.jpg"
               />
               <Item.Content>
                 <Item.Header as="a">{this.props.title}</Item.Header>
@@ -69,7 +69,6 @@ class Post extends Component {
           <Button
             // onClick={onPostOpen(event)}
             as="a"
-            color="grey"
             floated="right"
             content="Edit"
           />

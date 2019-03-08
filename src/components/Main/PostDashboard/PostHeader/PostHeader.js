@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Segment, Item } from 'semantic-ui-react';
+import { Header, Segment, Item } from 'semantic-ui-react';
 import { withAuthorization } from '../../../Session';
-import './PostHeader.css';
 
 class PostHeader extends Component {
   render() {
@@ -9,7 +8,10 @@ class PostHeader extends Component {
       <Segment.Group>
         <Segment>
           <Item>
-            <Item.Image size="massive" src="/assets/SF.jpg" />
+            <Header as="h2" color="blue" dividing>
+              San Francisco, CA
+            </Header>
+            <Item.Image size="massive" src="/assets/SF2.jpg" />
           </Item>
         </Segment>
       </Segment.Group>
