@@ -8,7 +8,6 @@ class Post extends Component {
     // Write delete function
     deletePost = (e) => {
         e.preventDefault();
-        
     }
 
     render () {

@@ -8,12 +8,12 @@ class Cities extends Component {
     this.props.setCity(e);
   };
 
-  testLog = e => {
-      e.preventDefault();
-      console.log(e);
-    //   console.log(e.persist());
-      console.log(this);
+  testLog = (city) => (e) => {
+    e.preventDefault()
+    console.log(city)
+    // "this", "e", "id"
   }
+
 
   render() {
     return (
@@ -37,9 +37,9 @@ class Cities extends Component {
                   icon: 'travel',
                   ribbon: true
                 }}
-                name='san-francisco'
-                onClick={this.testLog}
+                onClick={this.testLog('san-francisco')}
               />
+              
             </Segment>
             <Segment>
               <Image
@@ -55,7 +55,7 @@ class Cities extends Component {
                   ribbon: true
                 }}
                 name='london'
-                onClick={this.testLog}
+                onClick={this.testLog('london')}
               />
             </Segment>
             <Segment>

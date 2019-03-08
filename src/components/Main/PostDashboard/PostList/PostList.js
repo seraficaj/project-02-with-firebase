@@ -5,8 +5,12 @@ import Post from './Post/Post';
 import firebase from 'firebase';
 
 class PostList extends Component {
+    state = {
+        allposts: []
+    }
 
-    render () {
+    componentDidMount(){
+        let ths = this
         let posts = [];
         firebase
         .database()
@@ -24,12 +28,19 @@ class PostList extends Component {
                         comments={s.val().comments}
                         />)
             });
+            ths.setState({
+                allposts: posts
+            })
+            console.log(ths.state.allposts)
         });
+        
+    }
+    render () {
 
         return (
             <div id='post-list'>
                 <h1>Post List</h1>
-                {posts}
+                {this.state.allposts}
             </div>
         );
     }
