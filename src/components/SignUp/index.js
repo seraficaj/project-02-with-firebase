@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
+import { withFirebase } from "../Firebase";
+import * as ROUTES from "../../constants/routes";
 
 const SignUpPage = () => (
   <div>
@@ -12,11 +12,12 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
-  username: '',
-  email: '',
-  passwordOne: '',
-  passwordTwo: '',
-  error: null,
+  userImg: "",
+  username: "",
+  email: "",
+  passwordOne: "",
+  passwordTwo: "",
+  error: null
 };
 
 class SignUpFormBase extends Component {
@@ -27,18 +28,17 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { userImg, username, email, passwordOne } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
-        return this.props.firebase
-          .user(authUser.user.uid)
-          .set({
-            username,
-            email,
-          });
+        return this.props.firebase.user(authUser.user.uid).set({
+          userImg,
+          username,
+          email
+        });
       })
       .then(authUser => {
         this.setState({ ...INITIAL_STATE });
@@ -57,21 +57,29 @@ class SignUpFormBase extends Component {
 
   render() {
     const {
+      userImg,
       username,
       email,
       passwordOne,
       passwordTwo,
-      error,
+      error
     } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      email === '' ||
-      username === '';
+      passwordOne === "" ||
+      email === "" ||
+      username === "";
 
     return (
       <form onSubmit={this.onSubmit}>
+        <input
+          name="userImg"
+          value={userImg}
+          onChane={this.onChange}
+          type="file"
+          accept="image/png, image/jpeg"
+        />
         <input
           name="username"
           value={username}
