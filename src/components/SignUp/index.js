@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-
+import { Item } from "semantic-ui-react";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 
 const SignUpPage = () => (
   <div>
     <h1>SignUp</h1>
+
     <SignUpForm />
   </div>
 );
@@ -56,6 +57,9 @@ class SignUpFormBase extends Component {
   };
 
   render() {
+    // for prof img
+
+    // end for prof img
     const {
       userImg,
       username,
@@ -73,13 +77,18 @@ class SignUpFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          name="userImg"
-          value={userImg}
-          onChane={this.onChange}
-          type="file"
-          accept="image/png, image/jpeg"
-        />
+        <div>
+          <input
+            name="userImg"
+            value={userImg}
+            onChange={this.onChange}
+            type="file"
+            accept="image/png, image/jpeg"
+          />
+          <div className="preview" />
+        </div>
+
+        <hr />
         <input
           name="username"
           value={username}
