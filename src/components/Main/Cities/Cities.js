@@ -1,25 +1,72 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../../Session';
-import './cities.css'
+import { Header, Image, Segment, Container } from 'semantic-ui-react';
 
 class Cities extends Component {
-    setCity = (e) => {
-        e.preventDefault();
-        this.props.setCity(e);
-    }
+  setCity = e => {
+    e.preventDefault();
+    this.props.setCity(e);
+  };
 
-    render () {
-        return (
-            <div id='cities'>
-                <h1>Cities</h1>
-                <ul>
-                    <li><a href='' name='san-francisco' onClick={this.setCity}>San Francisco</a></li>
-                    <li><a href='' name='london' onClick={this.setCity}>London</a></li>
-                    <li><a href='' name='gibraltar' onClick={this.setCity}>Gibraltar</a></li>
-                </ul>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Header as="h1" attached="top">
+          AttachedHeadr
+        </Header>
+        <h1>Cities</h1>
+        <Container>
+          <Segment.Group>
+            <Segment>
+              <Image
+                src="/assets/SF1.jpg"
+                as="a"
+                size="massive"
+                href="/"
+                label={{
+                  as: 'a',
+                  color: 'black',
+                  content: 'San Francisco',
+                  icon: 'travel',
+                  ribbon: true
+                }}
+              />
+            </Segment>
+            <Segment>
+              <Image
+                src="/assets/London1.jpg"
+                as="a"
+                size="massive"
+                href="/"
+                label={{
+                  as: 'a',
+                  color: 'black',
+                  content: 'London',
+                  icon: 'travel',
+                  ribbon: true
+                }}
+              />
+            </Segment>
+            <Segment>
+              <Image
+                src="/assets/Sydney1.jpg"
+                as="a"
+                size="massive"
+                href="/"
+                label={{
+                  as: 'a',
+                  color: 'black',
+                  content: 'Sydney',
+                  icon: 'travel',
+                  ribbon: true
+                }}
+              />
+            </Segment>
+          </Segment.Group>
+        </Container>
+      </div>
+    );
+  }
 }
 
 const condition = authUser => !!authUser;
