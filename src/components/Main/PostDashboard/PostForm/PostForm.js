@@ -18,7 +18,6 @@ class PostForm extends Component {
                 comments: this.state.comments,
                 cityId: this.props.currentCityId
             });
-            
     }
     handleInput = (e) => {
         this.setState({ 
@@ -51,7 +50,7 @@ class PostForm extends Component {
                   onChange={this.handleInput}
                 />
 
-                <Button positive type="submit" onSubmit={this.createPost}>
+                <Button positive type="submit" onClick={this.createPost}>
                   Submit
                 </Button>
               </Form>

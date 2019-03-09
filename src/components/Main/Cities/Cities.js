@@ -3,17 +3,10 @@ import { withAuthorization } from '../../Session';
 import { Header, Image, Segment, Container } from 'semantic-ui-react';
 
 class Cities extends Component {
-  setCity = e => {
+  setCity = (cityId) => (e) => {
     e.preventDefault();
-    this.props.setCity(e);
+    this.props.setCity(cityId);
   };
-
-  testLog = e => {
-      e.preventDefault();
-      console.log(e);
-    //   console.log(e.persist());
-      console.log(this);
-  }
 
   render() {
     return (
@@ -37,9 +30,9 @@ class Cities extends Component {
                   icon: 'travel',
                   ribbon: true
                 }}
-                name='san-francisco'
-                onClick={this.testLog}
+                onClick={this.setCity('san-francisco')}
               />
+              
             </Segment>
             <Segment>
               <Image
@@ -55,7 +48,7 @@ class Cities extends Component {
                   ribbon: true
                 }}
                 name='london'
-                onClick={this.testLog}
+                onClick={this.setCity('london')}
               />
             </Segment>
             <Segment>
@@ -72,7 +65,7 @@ class Cities extends Component {
                   ribbon: true
                 }}
                 name='sydney'
-                onClick={this.testLog}
+                onClick={this.setCity('sydney')}
               />
             </Segment>
           </Segment.Group>
