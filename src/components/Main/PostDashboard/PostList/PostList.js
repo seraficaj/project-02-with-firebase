@@ -6,11 +6,12 @@ import firebase from 'firebase';
 
 class PostList extends Component {
     state = {
-        allposts: []
+        cityPosts: []
     }
 
     componentDidMount(){
-        let ths = this
+        console.log('PostList componentDidMount triggered');
+        let thisKeeper = this
         let posts = [];
         firebase
         .database()
@@ -28,19 +29,19 @@ class PostList extends Component {
                         comments={s.val().comments}
                         />)
             });
-            ths.setState({
-                allposts: posts
+            thisKeeper.setState({
+                cityPosts: posts
             })
-            console.log(ths.state.allposts)
+            console.log(thisKeeper.state.cityPosts)
         });
         
     }
     render () {
-
+        console.log('PostList render triggered')
         return (
             <div id='post-list'>
                 <h1>Post List</h1>
-                {this.state.allposts}
+                {this.state.cityPosts}
             </div>
         );
     }
