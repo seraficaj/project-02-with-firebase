@@ -43,7 +43,7 @@ class PasswordChangeForm extends Component {
     return (
       <div>
         <Header color="teal" sub content="Change password" />
-        <p>Use this form to update your account settings</p>
+        <p>Use this form to update your account password</p>
         <Form onSubmit={this.onSubmit}>
           <Form.Input
             width={8}
