@@ -22,21 +22,22 @@ const AccountPage = () => (
     <Grid.Column width={12}>
       <AuthUserContext.Consumer>
         {authUser => (
-          <Segment>
+          <div>
             <Header dividing size="large" content="Account" />
-            <div>
-              <Header color="teal" sub content="Change password" />
-              <p>Use this form to update your account settings</p>
-              {/* <h3>Account: {authUser.email}</h3> */}
-              {/* <Form> */}
-              {/* <PasswordForgetForm />
+
+            {/* <h3>Account: {authUser.email}</h3> */}
+            {/* <Form> */}
+            {/* <PasswordForgetForm />
 
             <Divider /> */}
-
+            <Segment>
+              <AccountBasic />
+            </Segment>
+            <Segment>
               <PasswordChangeForm />
               {/* </Form> */}
-            </div>
-          </Segment>
+            </Segment>
+          </div>
         )}
       </AuthUserContext.Consumer>
     </Grid.Column>

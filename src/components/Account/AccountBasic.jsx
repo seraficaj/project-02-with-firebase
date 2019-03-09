@@ -4,8 +4,8 @@ import { Segment, Form, Header, Divider, Button } from 'semantic-ui-react';
 class AccountBasic extends Component {
   render() {
     return (
-      <Segment>
-        <Header dividing size="large" content="Basics" />
+      <div>
+        <Header color="teal" sub content="Basics" />
         {/* <Card>
           <Image src="https://randomuser.me/api/portraits/men/20.jpg" />
         </Card> */}
@@ -13,7 +13,7 @@ class AccountBasic extends Component {
           <Form.Field width={8}>
             <input type="text" placeholder="Name" />
           </Form.Field>
-          <Form.Group inline>{/* TODO: Gender Radio button */}</Form.Group>
+          {/* <Form.Group inline>TODO: Gender Radio button</Form.Group> */}
           <Form.Field width={8}>
             <label>Join Date:</label>
             <input type="date" placeholder="Join Date" />
@@ -24,7 +24,7 @@ class AccountBasic extends Component {
           <Divider />
           <Button size="large" positive content="Update Profile" />
         </Form>
-      </Segment>
+      </div>
     );
   }
 }
