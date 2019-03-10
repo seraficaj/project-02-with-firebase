@@ -3,8 +3,11 @@ body {
 }
 
 /* sign in form styles */
-body > div,
-body > div > div,
+<<<<<<< HEAD
+/* body > div,
+body > div > div, */
+=======
+>>>>>>> 12b53fd8fe97119f1eecf0a1b8f607af2fc79b1e
 body > div > div > div.signin-page {
   height: 100%;
 }

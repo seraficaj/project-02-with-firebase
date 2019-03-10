@@ -67,7 +67,7 @@ class SignInFormBase extends Component {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
-            <Image src="assets/logo.png" /> Log-in to your account
+            <Image src="assets/logo.png" /> Sign-in to your account
           </Header>
           <Form onSubmit={this.onSubmit} size="large">
             <Segment stacked>

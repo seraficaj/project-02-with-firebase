@@ -18,7 +18,6 @@ class PostForm extends Component {
         cityId: this.props.currentCityId
       });
   };
-
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -26,10 +25,8 @@ class PostForm extends Component {
   };
 
   render() {
-    //const { title, comments, error } = this.state;
-    // const isInvalid = title === "" || comments === "";
     return (
-      <Modal trigger={<Button color="primary">New Post</Button>} closeIcon>
+      <Modal trigger={<Button color="green">New Post</Button>} closeIcon>
         <Modal.Header>Submit a New Post</Modal.Header>
         <Modal.Content>
           <Form>
