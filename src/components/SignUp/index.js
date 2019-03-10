@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Item } from "semantic-ui-react";
+import { Item, Image } from "semantic-ui-react";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
+import Firebase from "firebase";
+
+var selectedFile;
 
 const SignUpPage = () => (
   <div>
@@ -13,7 +16,7 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
-  userImg: "",
+  photoURL: "",
   username: "",
   email: "",
   passwordOne: "",
@@ -29,14 +32,14 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { userImg, username, email, passwordOne } = this.state;
+    const { photoURL, username, email, passwordOne } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
         return this.props.firebase.user(authUser.user.uid).set({
-          userImg,
+          photoURL,
           username,
           email
         });
@@ -51,17 +54,22 @@ class SignUpFormBase extends Component {
 
     event.preventDefault();
   };
+  file = event => {
+    selectedFile = event.target.files[0];
+  };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
+  // uploadFile = event => {
+  //   var storageRef = firebase.storage().ref("/userImages");
+  // };
   render() {
     // for prof img
 
     // end for prof img
     const {
-      userImg,
+      photoURL,
       username,
       email,
       passwordOne,
@@ -77,17 +85,17 @@ class SignUpFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <div>
+        <Image avatar spaced="right" src="/assets/user.png" />
+        <label className="upload">
           <input
-            name="userImg"
-            value={userImg}
-            onChange={this.onChange}
+            id="file"
+            name="photoURL"
+            value={photoURL}
+            onChange={this.uploadFile}
             type="file"
             accept="image/png, image/jpeg"
           />
-          <div className="preview" />
-        </div>
-
+        </label>
         <hr />
         <input
           name="username"

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../Session';
-// import './main.css';
 import Cities from './Cities/Cities';
 import PostDashboard from './PostDashboard/PostDashboard';
-import { withFirebase } from '../Firebase';
-import { Grid } from 'semantic-ui-react';
+import firebase from 'firebase';
+import {Grid} from 'semantic-ui-react';
 
 class Main extends Component {
   state = {
-    currentCityId: 'san-francisco'
-  };
+    currentCityId: 'san-francisco',
+    posts: []
+  }
+
 
   handleInput = e => {
     this.setState({
@@ -44,5 +45,4 @@ class Main extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withFirebase(Main);
-// export default withAuthorization(condition)(Main);
+export default withAuthorization(condition)(Main);
