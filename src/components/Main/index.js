@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withAuthorization,AuthUserContext, } from '../Session';
+import { withAuthorization,AuthUserContext } from '../Session';
 import Cities from './Cities/Cities';
 import PostDashboard from './PostDashboard/PostDashboard';
 import firebase from 'firebase';
@@ -8,6 +8,10 @@ import {Grid} from 'semantic-ui-react';
 class Main extends Component {
   state = {
     currentCityId: 'san-francisco',
+    currentUserId: <AuthUserContext.Consumer>
+                    {authUser => (authUser.uid)}
+                  </AuthUserContext.Consumer>
+
   }
 
   handleInput = e => {
@@ -24,7 +28,8 @@ class Main extends Component {
     console.log(this.state.currentCityId);
   };
 
-  render() { 
+  render() {
+    console.log(this.state.currentUserId) 
     return (      
       <AuthUserContext.Consumer>
         {authUser => (
