@@ -1,12 +1,9 @@
-
-
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { Header, Image, Segment, Button, Form, Gri } from "semantic-ui-react";
-import { withFirebase } from "../Firebase";
-import * as ROUTES from "../../constants/routes";
-import Firebase from "firebase";
-
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { Header, Image, Segment, Button, Form, Grid } from 'semantic-ui-react';
+import { withFirebase } from '../Firebase';
+import * as ROUTES from '../../constants/routes';
+import Firebase from 'firebase';
 
 var selectedFile;
 
@@ -17,10 +14,10 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
-  username: "",
-  email: "",
-  passwordOne: "",
-  passwordTwo: "",
+  username: '',
+  email: '',
+  passwordOne: '',
+  passwordTwo: '',
   error: null
 };
 
@@ -79,12 +76,11 @@ class SignUpFormBase extends Component {
 
     const isInvalid =
       passwordOne !== passwordTwo ||
-      passwordOne === "" ||
-      email === "" ||
-      username === "";
+      passwordOne === '' ||
+      email === '' ||
+      username === '';
 
     return (
-
       <Grid
         textAlign="center"
         style={{ height: '100%' }}
@@ -136,7 +132,6 @@ class SignUpFormBase extends Component {
                 value={passwordTwo}
                 onChange={this.onChange}
               />
-
 
               <Button
                 disabled={isInvalid}
