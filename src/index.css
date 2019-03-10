@@ -3,8 +3,6 @@ body {
 }
 
 /* sign in form styles */
-body > div,
-body > div > div,
 body > div > div > div.signin-page {
   height: 100%;
 }
