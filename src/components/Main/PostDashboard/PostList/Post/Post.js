@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withAuthorization } from '../../../../Session';
+import { withAuthorization, AuthUserContext } from '../../../../Session';
 import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
 
 class Post extends Component {
@@ -13,6 +13,8 @@ class Post extends Component {
 
     render () {
         return (
+          <AuthUserContext.consumer>
+            {authUser => ( 
             <Segment.Group id={this.props.postId}>
               <Segment>
                 <Item.Group>
@@ -66,7 +68,10 @@ class Post extends Component {
                 />
               </Segment>
             </Segment.Group>
-           )
+          )}
+          </AuthUserContext.consumer>
+            
+        )
     }
 }
 
