@@ -1,16 +1,17 @@
+
+
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Item, Image } from "semantic-ui-react";
+import { Header, Image, Segment, Button, Form, Gri } from "semantic-ui-react";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import Firebase from "firebase";
+
 
 var selectedFile;
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
-
     <SignUpForm />
   </div>
 );
@@ -83,53 +84,74 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <Image avatar spaced="right" src="/assets/user.png" />
-        <label className="upload">
-          <input
-            id="file"
-            name="photoURL"
-            value={photoURL}
-            onChange={this.uploadFile}
-            type="file"
-            accept="image/png, image/jpeg"
-          />
-        </label>
-        <hr />
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
 
-        {error && <p>{error.message}</p>}
-      </form>
+      <Grid
+        textAlign="center"
+        style={{ height: '100%' }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            <Image src="assets/logo.png" /> Sign up now - it's free!
+          </Header>
+          <Form onSubmit={this.onSubmit} size="large">
+            <Segment stacked>
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Full Name"
+                name="username"
+                value={username}
+                onChange={this.onChange}
+                type="text"
+              />
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="E-mail address"
+                name="email"
+                value={email}
+                onChange={this.onChange}
+                type="text"
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                name="passwordOne"
+                value={passwordOne}
+                onChange={this.onChange}
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Confirm Password"
+                type="password"
+                name="passwordTwo"
+                value={passwordTwo}
+                onChange={this.onChange}
+              />
+
+
+              <Button
+                disabled={isInvalid}
+                type="submit"
+                color="teal"
+                fluid
+                size="large"
+              >
+                Sign Up
+              </Button>
+              {error && <p>{error.message}</p>}
+            </Segment>
+          </Form>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

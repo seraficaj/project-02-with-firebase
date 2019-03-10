@@ -21,7 +21,7 @@ const SettingsNav = () => {
           content="Profile"
         />
         <Menu.Item as={NavLink} to="/account">
-          My Account
+          Account Info
         </Menu.Item>
       </Menu>
     </Grid.Column>

@@ -36,7 +36,7 @@ const NavigationAuth = ({ firebase }) => (
             to={ROUTES.MY_POSTS}
           />
           <Dropdown.Item
-            text="My Profile"
+            text="Account"
             icon="user"
             as={NavLink}
             to={ROUTES.ACCOUNT}
@@ -72,8 +72,10 @@ const NavigationNonAuth = () => (
       <Button
         basic
         inverted
-        content="Register"
-        style={{ marginLeft: "0.5em" }}
+
+        content="Sign Up"
+        style={{ marginLeft: '0.5em' }}
+
         as={NavLink}
         to={ROUTES.SIGN_UP}
       />
