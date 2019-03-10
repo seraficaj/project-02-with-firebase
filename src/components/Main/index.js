@@ -8,9 +8,7 @@ import {Grid} from 'semantic-ui-react';
 class Main extends Component {
   state = {
     currentCityId: 'san-francisco',
-    posts: []
   }
-
 
   handleInput = e => {
     this.setState({
@@ -18,12 +16,12 @@ class Main extends Component {
     });
   };
 
-  setCity = e => {
-    e.preventDefault();
-    console.log(e.target.name);
+  setCity = (cityId) => {
+    console.log(cityId);
     this.setState({
-      currentCityId: e.target.name
+      currentCityId: cityId
     });
+    console.log(this.state.currentCityId);
   };
 
   render() {

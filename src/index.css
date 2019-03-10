@@ -48,6 +48,10 @@ body {
 
 /* navbar styles */
 
+.ui.menu .dropdown {
+  margin-right: 2.5em;
+}
+
 .ui.menu .item img.logo {
   margin-right: 1.5em;
 }

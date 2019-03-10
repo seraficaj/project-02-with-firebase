@@ -23,6 +23,7 @@ const NavigationAuth = ({ firebase }) => (
       <Menu.Item as={NavLink} to={ROUTES.MAIN} name="Main" />
       <Menu.Item as={NavLink} to={ROUTES.ACCOUNT} name="Account" />
     </Container>
+
     <Menu.Item position="right">
       <Image avatar spaced="right" src="/assets/user.png" />
       <Dropdown pointing="top left" text="Username">
@@ -55,7 +56,7 @@ const NavigationNonAuth = () => (
       <Menu.Item as={NavLink} to={ROUTES.MAIN} name="Main" />
       <Menu.Item as={NavLink} to={ROUTES.ACCOUNT} name="Account" />
     </Container>
-    <Menu.Item position="right">
+    <Menu.Item>
       <Button basic inverted content="Login">
         <Link to={ROUTES.SIGN_IN}>Sign In</Link>
       </Button>
