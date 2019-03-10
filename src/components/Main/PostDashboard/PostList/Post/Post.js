@@ -14,6 +14,13 @@ import {
 import firebase from "firebase";
 
 class Post extends Component {
+  constructor() {
+    super();
+    this.state = {
+      title: "",
+      comments: ""
+    };
+  }
   // state = {
   //   modalOpen: "false",
   //   title: "",
@@ -79,6 +86,8 @@ class Post extends Component {
   };
 
   render() {
+    const { title, comments } = this.state;
+    const isEnabled = title.length > 0 && comments.length > 0;
     return (
       <Segment.Group id={this.props.postId}>
         <Segment>
@@ -151,7 +160,7 @@ class Post extends Component {
                   positive
                   type="submit"
                   onClick={this.updatePost(this, this.props.postId)}
-                  //disabled={!}
+                  disabled={!isEnabled}
                 >
                   Save
                 </Button>
