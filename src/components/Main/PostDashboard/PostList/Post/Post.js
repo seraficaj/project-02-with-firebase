@@ -101,7 +101,7 @@ class Post extends Component {
               <Item.Content>
                 <Item.Header as="a">{this.props.title}</Item.Header>
                 <Item.Description>
-                  Posted by <a> {this.props.author}</a>
+                  Posted by <a> {this.props.username}</a>
                 </Item.Description>
               </Item.Content>
             </Item>

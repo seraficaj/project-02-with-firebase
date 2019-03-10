@@ -1,12 +1,9 @@
-
-
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Header, Image, Segment, Button, Form, Gri } from "semantic-ui-react";
+import { Header, Image, Segment, Button, Form, Grid } from "semantic-ui-react";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 import Firebase from "firebase";
-
 
 var selectedFile;
 
@@ -84,10 +81,9 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-
       <Grid
         textAlign="center"
-        style={{ height: '100%' }}
+        style={{ height: "100%" }}
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
@@ -136,7 +132,6 @@ class SignUpFormBase extends Component {
                 value={passwordTwo}
                 onChange={this.onChange}
               />
-
 
               <Button
                 disabled={isInvalid}
