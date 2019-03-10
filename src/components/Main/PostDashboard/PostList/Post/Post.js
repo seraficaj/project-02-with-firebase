@@ -102,7 +102,7 @@ class Post extends Component {
                 floated="right"
                 content="Delete"
               />
-              <Modal trigger={<Button color="primary" floated="right">Edit</Button>} closeIcon>
+              <Modal onClick={console.log('show modal')} trigger={<Button color="primary" floated="right">Edit</Button>} closeIcon>
                 <Modal.Header>Edit Post</Modal.Header>
                 <Modal.Content>
                   <Form>
