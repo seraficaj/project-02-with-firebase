@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
-  error: null,
+  error: null
 };
 
 class SignUpFormBase extends Component {
@@ -33,12 +33,10 @@ class SignUpFormBase extends Component {
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
-        return this.props.firebase
-          .user(authUser.user.uid)
-          .set({
-            username,
-            email,
-          });
+        return this.props.firebase.user(authUser.user.uid).set({
+          username,
+          email
+        });
       })
       .then(authUser => {
         this.setState({ ...INITIAL_STATE });
@@ -56,13 +54,7 @@ class SignUpFormBase extends Component {
   };
 
   render() {
-    const {
-      username,
-      email,
-      passwordOne,
-      passwordTwo,
-      error,
-    } = this.state;
+    const { username, email, passwordOne, passwordTwo, error } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
@@ -112,7 +104,7 @@ class SignUpFormBase extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    New to us? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
 );
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
