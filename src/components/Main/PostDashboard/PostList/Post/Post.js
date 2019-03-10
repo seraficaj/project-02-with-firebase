@@ -1,43 +1,10 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { withAuthorization, AuthUserContext } from '../../../../Session';
-import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
-||||||| merged common ancestors
-import { withAuthorization } from '../../../../Session';
-import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
-=======
 import { withAuthorization } from '../../../../Session';
 import { Segment, Item, Icon, Modal, Form, Input, TextArea, List, Button } from 'semantic-ui-react';
 import firebase from 'firebase';
->>>>>>> 0011ae6c0589bc85d6be57c9dac06ee0ffbab6ad
 
 class Post extends Component {
 
-<<<<<<< HEAD
-    render () {
-        return (
-          <AuthUserContext.consumer>
-            {authUser => ( 
-            <Segment.Group id={this.props.postId}>
-              <Segment>
-                <Item.Group>
-                  <Item>
-                    <Item.Image
-                      size="tiny"
-                      circular
-                      src="https://randomuser.me/api/portraits/women/42.jpg"
-||||||| merged common ancestors
-    render () {
-        return (
-            <Segment.Group id={this.props.postId}>
-              <Segment>
-                <Item.Group>
-                  <Item>
-                    <Item.Image
-                      size="tiny"
-                      circular
-                      src="https://randomuser.me/api/portraits/women/42.jpg"
-=======
   // state = {
   //   modalState: 'false'
   // }
@@ -154,106 +121,7 @@ class Post extends Component {
                       placeholder={this.props.comments}
                       name='comments'
                       onChange={this.handleInput}
->>>>>>> 0011ae6c0589bc85d6be57c9dac06ee0ffbab6ad
                     />
-<<<<<<< HEAD
-                    <Item.Content>
-                      <Item.Header as="a">{this.props.title}</Item.Header>
-                      <Item.Description>
-                        Posted by <a> {this.props.author}</a>
-                      </Item.Description>
-                    </Item.Content>
-                  </Item>
-                </Item.Group>
-              </Segment>
-              <Segment>
-                <span>
-                  <Icon name="clock" /> 'date'|
-                  <Icon name="marker" />
-                  {this.props.cityId}
-                </span>
-              </Segment>
-              <Segment secondary>
-                <span>
-                   {this.props.comments}
-                </span>
-              </Segment>
-              <Segment clearing>
-                <Button
-                  // onClick={deletePost(this.id)}
-                  as="a"
-                  color="red"
-                  floated="right"
-                  content="Delete"
-                />
-                <Button
-                  // onClick={onPostOpen(event)}
-                  as="a"
-                  floated="right"
-                  content="Edit"
-                />
-                <Button
-                  //Opens detailed view of post
-                  as="a"
-                  color="teal"
-                  floated="right"
-                  content="View"
-                />
-              </Segment>
-            </Segment.Group>
-          )}
-          </AuthUserContext.consumer>
-            
-        )
-    }
-||||||| merged common ancestors
-                    <Item.Content>
-                      <Item.Header as="a">{this.props.title}</Item.Header>
-                      <Item.Description>
-                        Posted by <a> {this.props.author}</a>
-                      </Item.Description>
-                    </Item.Content>
-                  </Item>
-                </Item.Group>
-              </Segment>
-              <Segment>
-                <span>
-                  <Icon name="clock" /> 'date'|
-                  <Icon name="marker" />
-                  {this.props.cityId}
-                </span>
-              </Segment>
-              <Segment secondary>
-                <span>
-                   {this.props.comments}
-                </span>
-              </Segment>
-              <Segment clearing>
-                <Button
-                  // onClick={deletePost(this.id)}
-                  as="a"
-                  color="red"
-                  floated="right"
-                  content="Delete"
-                />
-                <Button
-                  // onClick={onPostOpen(event)}
-                  as="a"
-                  floated="right"
-                  content="Edit"
-                />
-                <Button
-                  //Opens detailed view of post
-                  as="a"
-                  color="teal"
-                  floated="right"
-                  content="View"
-                />
-              </Segment>
-            </Segment.Group>
-           )
-    }
-=======
                     <Button positive type="submit" onClick={this.updatePost(this,this.props.postId)}>
                       Save
                     </Button>
@@ -271,7 +139,6 @@ class Post extends Component {
           </Segment.Group>
           )
   }
->>>>>>> 0011ae6c0589bc85d6be57c9dac06ee0ffbab6ad
 }
 
 const condition = authUser => !!authUser;
