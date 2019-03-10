@@ -70,7 +70,7 @@ class SignUpFormBase extends Component {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
-            <Image src="assets/logo.png" /> Join now - it's free!
+            <Image src="assets/logo.png" /> Sign up now - it's free!
           </Header>
           <Form onSubmit={this.onSubmit} size="large">
             <Segment stacked>
