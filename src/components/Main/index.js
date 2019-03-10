@@ -24,7 +24,7 @@ class Main extends Component {
     console.log(this.state.currentCityId);
   };
 
-  render() {
+  render() { 
     return (
       <Grid>
         <Grid.Column width={6}>

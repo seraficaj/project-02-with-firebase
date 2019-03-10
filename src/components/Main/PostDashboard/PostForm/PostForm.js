@@ -19,10 +19,11 @@ class PostForm extends Component {
                 cityId: this.props.currentCityId
             });
     }
+    
     handleInput = (e) => {
         this.setState({ 
             [e.target.name]: e.target.value 
-          });
+          }); 
     }
 
     render () {

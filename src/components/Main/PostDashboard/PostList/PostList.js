@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Segment, Item, Icon, List, Button } from "semantic-ui-react";
+import {
+  Segment,
+  Item,
+  Icon,
+  List,
+  Button,
+  Modal,
+  Form,
+  Input
+} from "semantic-ui-react";
 import { withAuthorization } from "../../../Session";
 import Post from "./Post/Post";
 import firebase from "firebase";
