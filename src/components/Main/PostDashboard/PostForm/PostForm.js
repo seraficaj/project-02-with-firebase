@@ -1,13 +1,20 @@
-import React, { Component } from 'react';
-import { Input, TextArea, Button, Modal, Form } from 'semantic-ui-react';
-import { withAuthorization } from '../../../Session';
-import firebase from 'firebase';
+import React, { Component } from "react";
+import { Input, TextArea, Button, Modal, Form } from "semantic-ui-react";
+import { withAuthorization } from "../../../Session";
+import firebase from "firebase";
 
 class PostForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      title: "",
+      comments: ""
+    };
+  }
   createPost = e => {
     e.preventDefault();
     e.stopPropagation();
-    let postdb = firebase.database().ref('post/');
+    let postdb = firebase.database().ref("post/");
     let newPostId = postdb.push().key;
     firebase
       .database()
@@ -25,6 +32,8 @@ class PostForm extends Component {
   };
 
   render() {
+    const { title, comments } = this.state;
+    const isEnabled = title.length > 0 && comments.length > 0;
     return (
       <Modal trigger={<Button color="green">New Post</Button>} closeIcon>
         <Modal.Header>Submit a New Post</Modal.Header>
@@ -36,6 +45,9 @@ class PostForm extends Component {
               placeholder="Post Title"
               name="title"
               onChange={this.handleInput}
+              //value={this.state.title}
+              maxLength={200}
+              minLength={1}
             />
 
             <Form.Field
@@ -46,11 +58,21 @@ class PostForm extends Component {
               placeholder="Comments"
               name="comments"
               onChange={this.handleInput}
+              //value={this.state.comments}
+              maxLength={200}
+              minLength={1}
             />
 
-            <Button positive type="submit" onClick={this.createPost}>
+            <Form.Button
+              positive
+              type="submit"
+              onClick={this.createPost}
+              disabled={!isEnabled}
+              fluid
+              size="large"
+            >
               Submit
-            </Button>
+            </Form.Button>
           </Form>
         </Modal.Content>
       </Modal>

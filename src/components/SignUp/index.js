@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { Header, Image, Segment, Button, Form, Grid } from 'semantic-ui-react';
 
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
+
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { Header, Image, Segment, Button, Form, Gri } from "semantic-ui-react";
+import { withFirebase } from "../Firebase";
+import * as ROUTES from "../../constants/routes";
+import Firebase from "firebase";
+
+
+var selectedFile;
 
 const SignUpPage = () => (
   <div>
@@ -12,10 +17,10 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
-  username: '',
-  email: '',
-  passwordOne: '',
-  passwordTwo: '',
+  username: "",
+  email: "",
+  passwordOne: "",
+  passwordTwo: "",
   error: null
 };
 
@@ -27,13 +32,14 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { photoURL, username, email, passwordOne } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
         return this.props.firebase.user(authUser.user.uid).set({
+          photoURL,
           username,
           email
         });
@@ -48,21 +54,37 @@ class SignUpFormBase extends Component {
 
     event.preventDefault();
   };
+  file = event => {
+    selectedFile = event.target.files[0];
+  };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
+  // uploadFile = event => {
+  //   var storageRef = firebase.storage().ref("/userImages");
+  // };
   render() {
-    const { username, email, passwordOne, passwordTwo, error } = this.state;
+    // for prof img
+
+    // end for prof img
+    const {
+      photoURL,
+      username,
+      email,
+      passwordOne,
+      passwordTwo,
+      error
+    } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      email === '' ||
-      username === '';
+      passwordOne === "" ||
+      email === "" ||
+      username === "";
 
     return (
+
       <Grid
         textAlign="center"
         style={{ height: '100%' }}
@@ -114,6 +136,7 @@ class SignUpFormBase extends Component {
                 value={passwordTwo}
                 onChange={this.onChange}
               />
+
 
               <Button
                 disabled={isInvalid}
