@@ -79,6 +79,8 @@ class Post extends Component {
       .remove();
   };
   render () {
+    const { title, comments } = this.state;
+    const isEnabled = title.length > 0 && comments.length > 0;
       return (
           <Segment.Group id={this.props.postId}>
             <Segment>
@@ -155,7 +157,6 @@ class Post extends Component {
                   </Form>
                 </Modal.Content>
               </Modal>
-
               <Button
                 //Opens detailed view of post
                 as="a"
@@ -169,9 +170,7 @@ class Post extends Component {
                   Posted by <a> {this.props.author}</a>
                 </Item.Description>
               </Item.Content>
-            </Item>
-          </Item.Group>
-        </Segment>
+          </Segment>
         <Segment>
           <span>
             <Icon name="clock" /> 'date'|
@@ -225,7 +224,7 @@ class Post extends Component {
                   positive
                   type="submit"
                   onClick={this.updatePost(this, this.props.postId)}
-                  disabled={!isEnabled}
+                  disabled={!!isEnabled}
                 >
                   Save
                 </Button>

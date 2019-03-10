@@ -40,8 +40,10 @@ class PostList extends Component {
             />
           );
         });
-    }
-    render () {
+    })
+  }
+
+    render() {
         console.log('PostList render triggered')
         return (
             <div id='post-list'>
