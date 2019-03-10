@@ -5,7 +5,13 @@ import Post from "./Post/Post";
 import firebase from "firebase";
 
 class PostList extends Component {
-  render() {
+  state = {
+    cityPosts: []
+  };
+
+  componentDidMount() {
+    console.log("PostList componentDidMount triggered");
+    let thisKeeper = this;
     let posts = [];
     firebase
       .database()
@@ -25,12 +31,18 @@ class PostList extends Component {
             />
           );
         });
+        thisKeeper.setState({
+          cityPosts: posts
+        });
+        console.log(thisKeeper.state.cityPosts);
       });
-
+  }
+  render() {
+    console.log("PostList render triggered");
     return (
       <div id="post-list">
         <h1>Post List</h1>
-        {posts}
+        {this.state.cityPosts}
       </div>
     );
   }
