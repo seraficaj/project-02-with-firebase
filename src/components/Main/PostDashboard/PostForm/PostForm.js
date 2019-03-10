@@ -26,6 +26,8 @@ class PostForm extends Component {
   };
 
   render() {
+    //const { title, comments, error } = this.state;
+    // const isInvalid = title === "" || comments === "";
     return (
       <Modal trigger={<Button color="primary">New Post</Button>} closeIcon>
         <Modal.Header>Submit a New Post</Modal.Header>
@@ -37,6 +39,8 @@ class PostForm extends Component {
               placeholder="Post Title"
               name="title"
               onChange={this.handleInput}
+              //value={this.state.title}
+              maxlength={10}
             />
 
             <Form.Field
@@ -47,11 +51,20 @@ class PostForm extends Component {
               placeholder="Comments"
               name="comments"
               onChange={this.handleInput}
+              //value={this.state.comments}
+              maxlength={400}
             />
 
-            <Button positive type="submit" onClick={this.createPost}>
+            <Form.Button
+              positive
+              type="submit"
+              onClick={this.createPost}
+              //disabled={!this.state.comments}
+              fluid
+              size="large"
+            >
               Submit
-            </Button>
+            </Form.Button>
           </Form>
         </Modal.Content>
       </Modal>

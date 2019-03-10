@@ -16,7 +16,6 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
-  photoURL: "",
   username: "",
   email: "",
   passwordOne: "",
@@ -137,7 +136,7 @@ class SignUpFormBase extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    New to us? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
 );
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));

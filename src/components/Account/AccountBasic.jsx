@@ -15,12 +15,13 @@ class AccountBasic extends Component {
             <input type="text" placeholder="Name" />
           </Form.Field>
           {/* <Form.Group inline>TODO: Gender Radio button</Form.Group> */}
+
+          <Form.Field width={8}>
+            <input type="text" placeholder="Current City" />
+          </Form.Field>
           <Form.Field width={8}>
             <label>Join Date:</label>
             <input type="date" placeholder="Join Date" />
-          </Form.Field>
-          <Form.Field width={8}>
-            <input type="text" placeholder="Current City" />
           </Form.Field>
           <Divider />
           <Button size="large" positive content="Update Profile" />
