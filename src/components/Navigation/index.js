@@ -73,13 +73,9 @@ const NavigationNonAuth = () => (
         basic
         inverted
         content="Register"
-<<<<<<< HEAD
         style={{ marginLeft: "0.5em" }}
-=======
-        style={{ marginLeft: '0.5em' }}
         as={NavLink}
         to={ROUTES.SIGN_UP}
->>>>>>> a4df2e519d8614d3472905f634fa85f6153c3deb
       />
     </Menu.Item>
   </Menu>

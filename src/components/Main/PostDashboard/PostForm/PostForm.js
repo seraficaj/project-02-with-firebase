@@ -4,6 +4,13 @@ import { withAuthorization } from "../../../Session";
 import firebase from "firebase";
 
 class PostForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      title: "",
+      comments: ""
+    };
+  }
   createPost = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -25,6 +32,8 @@ class PostForm extends Component {
   };
 
   render() {
+    const { title, comments } = this.state;
+    const isEnabled = title.length > 0 && comments.length > 0;
     return (
       <Modal trigger={<Button color="green">New Post</Button>} closeIcon>
         <Modal.Header>Submit a New Post</Modal.Header>
@@ -58,7 +67,7 @@ class PostForm extends Component {
               positive
               type="submit"
               onClick={this.createPost}
-              //disabled={!this.state.comments}
+              disabled={!isEnabled}
               fluid
               size="large"
             >
