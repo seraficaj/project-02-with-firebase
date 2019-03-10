@@ -6,6 +6,7 @@ class AccountBasic extends Component {
     return (
       <div>
         <Header color="teal" sub content="Basics" />
+        <p>Use this form to update your account settings</p>
         {/* <Card>
           <Image src="https://randomuser.me/api/portraits/men/20.jpg" />
         </Card> */}

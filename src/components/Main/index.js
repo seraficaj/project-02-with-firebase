@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withAuthorization } from '../Session';
+import { withAuthorization,AuthUserContext, } from '../Session';
 import Cities from './Cities/Cities';
 import PostDashboard from './PostDashboard/PostDashboard';
 import firebase from 'firebase';
