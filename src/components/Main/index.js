@@ -24,6 +24,7 @@ class Main extends Component {
     console.log(this.state.currentCityId);
   };
 
+<<<<<<< HEAD
   render() {
     return (      
     <AuthUserContext.Consumer>
@@ -41,6 +42,35 @@ class Main extends Component {
         </Grid>
       )}
     </AuthUserContext.Consumer>
+||||||| merged common ancestors
+  render() {
+    return (
+      <Grid>
+        <Grid.Column width={6}>
+          <Cities
+            setCity={this.setCity}
+            currentCityId={this.state.currentCityId}
+          />
+        </Grid.Column>
+        <Grid.Column width={10}>
+          <PostDashboard currentCityId={this.state.currentCityId} />
+        </Grid.Column>
+      </Grid>
+=======
+  render() { 
+    return (
+      <Grid>
+        <Grid.Column width={6}>
+          <Cities
+            setCity={this.setCity}
+            currentCityId={this.state.currentCityId}
+          />
+        </Grid.Column>
+        <Grid.Column width={10}>
+          <PostDashboard currentCityId={this.state.currentCityId} />
+        </Grid.Column>
+      </Grid>
+>>>>>>> 0011ae6c0589bc85d6be57c9dac06ee0ffbab6ad
     );
   }
 }
