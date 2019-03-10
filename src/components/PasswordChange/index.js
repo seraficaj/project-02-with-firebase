@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Divider, Button } from 'semantic-ui-react';
+import { Header, Form, Divider, Button } from 'semantic-ui-react';
 
 import { withFirebase } from '../Firebase';
 
@@ -41,34 +41,38 @@ class PasswordChangeForm extends Component {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-      <Form onSubmit={this.onSubmit}>
-        <Form.Input
-          width={8}
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
-        />
-        <Form.Input
-          width={8}
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
-        />
-        <Divider />
-        <Button
-          size="large"
-          positive
-          disabled={isInvalid}
-          type="submit"
-          content="Update Password"
-        />
+      <div>
+        <Header color="teal" sub content="Change password" />
+        <p>Use this form to update your account password</p>
+        <Form onSubmit={this.onSubmit}>
+          <Form.Input
+            width={8}
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            placeholder="New Password"
+          />
+          <Form.Input
+            width={8}
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Confirm New Password"
+          />
+          <Divider />
+          <Button
+            size="large"
+            positive
+            disabled={isInvalid}
+            type="submit"
+            content="Update Password"
+          />
 
-        {error && <p>{error.message}</p>}
-      </Form>
+          {error && <p>{error.message}</p>}
+        </Form>
+      </div>
     );
   }
 }

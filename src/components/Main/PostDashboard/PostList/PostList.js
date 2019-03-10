@@ -1,41 +1,46 @@
-import React, { Component } from 'react';
-import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
-import { withAuthorization } from '../../../Session';
-import Post from './Post/Post';
-import firebase from 'firebase';
+import React, { Component } from "react";
+import {
+  Segment,
+  Item,
+  Icon,
+  List,
+  Button,
+  Modal,
+  Form,
+  Input
+} from "semantic-ui-react";
+import { withAuthorization } from "../../../Session";
+import Post from "./Post/Post";
+import firebase from "firebase";
 
 class PostList extends Component {
-    state = {
-        cityPosts: []
-    }
+  state = {
+    cityPosts: []
+  };
 
-    componentDidMount(){
-        console.log('PostList componentDidMount triggered');
-        let thisKeeper = this
-        let posts = [];
-        firebase
-        .database()
-        .ref('post')
-        .orderByChild('cityId')
-        .equalTo(this.props.currentCityId)
-        .on('value',function(snap){
-            console.log(snap.val());
-                snap.forEach((s) => {
-                console.log(s.key, s.val().title, s.val().comments, s.val().cityId);
-                    posts.push(<Post 
-                        postId={s.key} 
-                        cityId={s.val().cityId}
-                        title={s.val().title}
-                        comments={s.val().comments}
-                        />)
-            });
-            thisKeeper.setState({
-                cityPosts: posts
-            })
-            console.log(thisKeeper.state.cityPosts)
+  componentDidMount() {
+    console.log("PostList componentDidMount triggered");
+    let thisKeeper = this;
+    let posts = [];
+    firebase
+      .database()
+      .ref("post")
+      .orderByChild("cityId")
+      .equalTo(this.props.currentCityId)
+      .on("value", function(snap) {
+        console.log(snap.val());
+        snap.forEach(s => {
+          console.log(s.key, s.val().title, s.val().comments, s.val().cityId);
+          posts.push(
+            <Post
+              postId={s.key}
+              cityId={s.val().cityId}
+              title={s.val().title}
+              comments={s.val().comments}
+            />
+          );
         });
     }
-
     render () {
         console.log('PostList render triggered')
         return (
@@ -45,6 +50,7 @@ class PostList extends Component {
             </div>
         );
     }
+
 }
 
 const condition = authUser => !!authUser;
