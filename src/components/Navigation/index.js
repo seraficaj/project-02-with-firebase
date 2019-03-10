@@ -21,7 +21,7 @@ const NavigationAuth = ({ firebase }) => (
         Slayfarer
       </Menu.Item>
       <Menu.Item as={NavLink} to={ROUTES.MAIN} name="Main" />
-      <Menu.Item as={NavLink} to={ROUTES.ACCOUNT} name="Account" />
+      {/* <Menu.Item as={NavLink} to={ROUTES.ACCOUNT} name="Account" /> */}
     </Container>
 
     <Menu.Item position="right">
@@ -29,14 +29,19 @@ const NavigationAuth = ({ firebase }) => (
       <Dropdown pointing="top left" text="Username">
         <Dropdown.Menu>
           <Dropdown.Item text="New Post" icon="plus" />
-          <Dropdown.Item text="My Posts" icon="calendar" />
-          <Dropdown.Item text="My Profile" icon="user" />
           <Dropdown.Item
-            as={Link}
-            to="/settings"
-            text="Settings"
-            icon="settings"
+            text="My Posts"
+            icon="calendar"
+            as={NavLink}
+            to={ROUTES.MY_POSTS}
           />
+          <Dropdown.Item
+            text="My Profile"
+            icon="user"
+            as={NavLink}
+            to={ROUTES.ACCOUNT}
+          />
+
           <Dropdown.Item text="Sign Out" icon="power">
             <SignOutButton />
           </Dropdown.Item>
@@ -57,14 +62,20 @@ const NavigationNonAuth = () => (
       <Menu.Item as={NavLink} to={ROUTES.ACCOUNT} name="Account" />
     </Container>
     <Menu.Item>
-      <Button basic inverted content="Login">
-        <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-      </Button>
+      <Button
+        basic
+        inverted
+        content="Sign In"
+        as={NavLink}
+        to={ROUTES.SIGN_IN}
+      />
       <Button
         basic
         inverted
         content="Register"
         style={{ marginLeft: '0.5em' }}
+        as={NavLink}
+        to={ROUTES.SIGN_UP}
       />
     </Menu.Item>
   </Menu>

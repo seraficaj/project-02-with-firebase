@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../../Session';
+import {BrowserRouter as Router, Link, NavLink, withRouter } from 'react-router-dom';
 import { Header, Image, Segment, Container } from 'semantic-ui-react';
 
 class Cities extends Component {
@@ -15,25 +16,28 @@ class Cities extends Component {
           AttachedHeadr
         </Header>
         <h1>Cities</h1>
+        <Router>
         <Container>
           <Segment.Group>
-            <Segment>
-              <Image
-                src="/assets/SF1.jpg"
-                as="a"
-                size="massive"
-                href="/"
-                label={{
-                  as: 'a',
-                  color: 'black',
-                  content: 'San Francisco',
-                  icon: 'travel',
-                  ribbon: true
-                }}
-                onClick={this.setCity('san-francisco')}
-              />
-              
-            </Segment>
+            <Link to="/sanFrancisco">
+              <Segment>
+                <Image
+                  src="/assets/SF1.jpg"
+                  as="a"
+                  size="massive"
+                  href="/"
+                  label={{
+                    as: 'a',
+                    color: 'black',
+                    content: 'San Francisco',
+                    icon: 'travel',
+                    ribbon: true
+                  }}
+                  onClick={this.setCity('san-francisco')}
+                />
+                
+              </Segment>
+            </Link>
             <Segment>
               <Image
                 src="/assets/London1.jpg"
@@ -70,6 +74,7 @@ class Cities extends Component {
             </Segment>
           </Segment.Group>
         </Container>
+        </Router>
       </div>
     );
   }
