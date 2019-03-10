@@ -133,6 +133,8 @@ class Post extends Component {
                   value={this.props.title}
                   name="title"
                   onChange={this.handleInput}
+                  maxLength={200}
+                  minLength={1}
                 />
                 <Form.Field
                   control="textarea"
@@ -142,12 +144,14 @@ class Post extends Component {
                   placeholder={this.props.comments}
                   name="comments"
                   onChange={this.handleInput}
+                  maxLength={200}
+                  minLength={1}
                 />
                 <Button
                   positive
                   type="submit"
                   onClick={this.updatePost(this, this.props.postId)}
-                  //disabled={false}
+                  //disabled={!}
                 >
                   Save
                 </Button>

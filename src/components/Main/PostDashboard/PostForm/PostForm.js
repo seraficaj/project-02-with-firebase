@@ -40,7 +40,8 @@ class PostForm extends Component {
               name="title"
               onChange={this.handleInput}
               //value={this.state.title}
-              maxlength={10}
+              maxLength={200}
+              minLength={1}
             />
 
             <Form.Field
@@ -52,7 +53,8 @@ class PostForm extends Component {
               name="comments"
               onChange={this.handleInput}
               //value={this.state.comments}
-              maxlength={400}
+              maxLength={200}
+              minLength={1}
             />
 
             <Form.Button
