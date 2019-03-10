@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withAuthorization } from '../Session';
+import { withAuthorization,AuthUserContext, } from '../Session';
 import Cities from './Cities/Cities';
 import PostDashboard from './PostDashboard/PostDashboard';
 import firebase from 'firebase';
@@ -24,7 +24,7 @@ class Main extends Component {
     console.log(this.state.currentCityId);
   };
 
-  render() {
+  render() { 
     return (
       <Grid>
         <Grid.Column width={6}>
