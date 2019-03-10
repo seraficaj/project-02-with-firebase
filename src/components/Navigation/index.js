@@ -1,11 +1,11 @@
-import React from "react";
-import { Link, NavLink, withRouter } from "react-router-dom";
-import { Image, Dropdown, Menu, Container, Button } from "semantic-ui-react";
+import React from 'react';
+import { Link, NavLink, withRouter } from 'react-router-dom';
+import { Image, Dropdown, Menu, Container, Button } from 'semantic-ui-react';
 
-import SignOutButton from "../SignOut";
-import * as ROUTES from "../../constants/routes";
-import { AuthUserContext } from "../Session";
-import { withFirebase } from "../Firebase";
+import SignOutButton from '../SignOut';
+import * as ROUTES from '../../constants/routes';
+import { AuthUserContext } from '../Session';
+import { withFirebase } from '../Firebase';
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
@@ -58,8 +58,6 @@ const NavigationNonAuth = () => (
         <img src="/assets/logo.png" alt="logo" />
         Slayfarer
       </Menu.Item>
-      <Menu.Item as={NavLink} to={ROUTES.MAIN} name="Main" />
-      <Menu.Item as={NavLink} to={ROUTES.ACCOUNT} name="Account" />
     </Container>
     <Menu.Item>
       <Button
@@ -72,10 +70,8 @@ const NavigationNonAuth = () => (
       <Button
         basic
         inverted
-
         content="Sign Up"
         style={{ marginLeft: '0.5em' }}
-
         as={NavLink}
         to={ROUTES.SIGN_UP}
       />
