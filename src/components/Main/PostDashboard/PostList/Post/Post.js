@@ -5,9 +5,9 @@ import firebase from 'firebase';
 
 class Post extends Component {
 
-  // state = {
-  //   modalState: 'false'
-  // }
+  state = {
+    editModal: false
+  }
 
   handleInput = (e) => {
     this.setState({ 
@@ -15,11 +15,19 @@ class Post extends Component {
       }); 
   }
 
-  // setModalState = (setting) => {
-  //   this.setState({
-  //     modalState: setting
-  //   })
-  // }
+  openEditModal = () => {
+    this.setState({
+      editModal: true
+    })
+  }
+
+  closeEditModal = () => {
+    this.setState({
+      editModal: false
+    })
+  }
+
+  
 
   updatePost = (formData,postId) => (e) => {
     e.preventDefault();
@@ -34,7 +42,7 @@ class Post extends Component {
         comments: this.state.comments,
         cityId: this.props.cityId
       })
-    // this.setModalState(false);        
+    this.closeEditModal();
   }
 
   deletePost = (postId) => (e) => {
@@ -87,7 +95,18 @@ class Post extends Component {
                 floated="right"
                 content="Delete"
               />
-              <Modal trigger={<Button color="primary" floated="right">Edit</Button>} closeIcon>
+
+              <Modal 
+                trigger={
+                  <Button 
+                    onClick={this.openEditModal}
+                    color="primary" 
+                    floated="right">Edit</Button>
+                  }
+                open={this.state.editModal}
+                onClose={this.closeEditModal}
+                closeIcon
+                >
                 <Modal.Header>Edit Post</Modal.Header>
                 <Modal.Content>
                   <Form>
@@ -113,6 +132,7 @@ class Post extends Component {
                   </Form>
                 </Modal.Content>
               </Modal>
+
               <Button
                 //Opens detailed view of post
                 as="a"

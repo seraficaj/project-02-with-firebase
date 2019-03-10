@@ -21,8 +21,11 @@ class Main extends Component {
     this.setState({
       currentCityId: cityId
     });
-    console.log(this.state.currentCityId);
   };
+
+  componentDidMount(){
+    console.log('Component mounted on Main')
+  }
 
   render() { 
     return (

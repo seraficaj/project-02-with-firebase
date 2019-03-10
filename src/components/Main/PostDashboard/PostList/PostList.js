@@ -34,8 +34,8 @@ class PostList extends Component {
             })
             console.log(thisKeeper.state.cityPosts)
         });
-        
     }
+
     render () {
         console.log('PostList render triggered')
         return (
