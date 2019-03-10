@@ -40,21 +40,17 @@ class PostList extends Component {
             />
           );
         });
-        thisKeeper.setState({
-          cityPosts: posts
-        });
-        console.log(thisKeeper.state.cityPosts);
-      });
-  }
-  render() {
-    console.log("PostList render triggered");
-    return (
-      <div id="post-list">
-        <h1>Post List</h1>
-        {this.state.cityPosts}
-      </div>
-    );
-  }
+    }
+    render () {
+        console.log('PostList render triggered')
+        return (
+            <div id='post-list'>
+                <h1>Post List</h1>
+                {this.state.cityPosts}
+            </div>
+        );
+    }
+
 }
 
 const condition = authUser => !!authUser;

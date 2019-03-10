@@ -14,6 +14,12 @@ import {
 import firebase from "firebase";
 
 class Post extends Component {
+  state = {
+    editModal: false,
+    title: "",
+    comments: ""
+  }
+
   constructor() {
     super();
     this.state = {
@@ -21,11 +27,6 @@ class Post extends Component {
       comments: ""
     };
   }
-  // state = {
-  //   modalOpen: "false",
-  //   title: "",
-  //   comments: ""
-  // };
 
   handleInput = e => {
     this.setState({
@@ -33,28 +34,21 @@ class Post extends Component {
     });
   };
 
-  // setModalState = (setting) => {
-  //   this.setState({
-  //     modalState: setting
-  //   })
-  // }
+  openEditModal = () => {
+    this.setState({
+      editModal: true
+    })
+  }
+  
+  closeEditModal = () => {
+    this.setState({
+      editModal: false
+    })
+  }
 
-  createPost = e => {
-    e.preventDefault();
-    e.stopPropagation();
-    let postdb = firebase.database().ref("post/");
-    let newPostId = postdb.push().key;
-    firebase
-      .database()
-      .ref(`post/${newPostId}`)
-      .update({
-        title: this.state.title,
-        comments: this.state.comments,
-        cityId: this.props.currentCityId
-      });
-  };
+  
 
-  updatePost = (formData, postId) => e => {
+  updatePost = (formData,postId) => (e) => {
     e.preventDefault();
     e.stopPropagation();
     console.log(
@@ -71,9 +65,9 @@ class Post extends Component {
         title: this.state.title,
         comments: this.state.comments,
         cityId: this.props.cityId
-      });
-    // this.setModalState(false);
-  };
+      })
+    this.closeEditModal();
+  }
 
   deletePost = postId => e => {
     e.preventDefault();
@@ -84,19 +78,90 @@ class Post extends Component {
       .ref(`post/${postId}`)
       .remove();
   };
+  render () {
+      return (
+          <Segment.Group id={this.props.postId}>
+            <Segment>
+              <Item.Group>
+                <Item>
+                  <Item.Image
+                    size="tiny"
+                    circular
+                    src="https://randomuser.me/api/portraits/women/42.jpg"
+                  />
+                  <Item.Content>
+                    <Item.Header as="a">{this.props.title}</Item.Header>
+                    <Item.Description>
+                      Posted by <a> {this.props.author}</a>
+                    </Item.Description>
+                  </Item.Content>
+                </Item>
+              </Item.Group>
+            </Segment>
+            <Segment>
+              <span>
+                <Icon name="clock" /> 'date'|
+                <Icon name="marker" />
+                {this.props.cityId}
+              </span>
+            </Segment>
+            <Segment secondary>
+              <span>
+                  {this.props.comments}
+              </span>
+            </Segment>
+            <Segment clearing>
+              <Button
+                onClick={this.deletePost(this.props.postId)}
+                as="a"
+                color="red"
+                floated="right"
+                content="Delete"
+              />
 
-  render() {
-    const { title, comments } = this.state;
-    const isEnabled = title.length > 0 && comments.length > 0;
-    return (
-      <Segment.Group id={this.props.postId}>
-        <Segment>
-          <Item.Group>
-            <Item>
-              <Item.Image
-                size="tiny"
-                circular
-                src="https://randomuser.me/api/portraits/women/42.jpg"
+              <Modal 
+                trigger={
+                  <Button 
+                    onClick={this.openEditModal}
+                    color="primary" 
+                    floated="right">Edit</Button>
+                  }
+                open={this.state.editModal}
+                onClose={this.closeEditModal}
+                closeIcon
+                >
+                <Modal.Header>Edit Post</Modal.Header>
+                <Modal.Content>
+                  <Form>
+                    <Form.Field
+                      control={Input}
+                      label="Post Title"
+                      value={this.props.title}
+                      name='title'
+                      onChange={this.handleInput}
+                    />
+                    <Form.Field
+                      control="textarea"
+                      rows="5"
+                      control={TextArea}
+                      label="Comments"
+                      placeholder={this.props.comments}
+                      name='comments'
+                      onChange={this.handleInput}
+                    />
+                    <Button positive type="submit" onClick={this.updatePost(this,this.props.postId)}>
+                      Save
+                    </Button>
+                  </Form>
+                </Modal.Content>
+              </Modal>
+
+              <Button
+                //Opens detailed view of post
+                as="a"
+                color="teal"
+                floated="right"
+                content="View"
               />
               <Item.Content>
                 <Item.Header as="a">{this.props.title}</Item.Header>
