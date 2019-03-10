@@ -25,18 +25,23 @@ class Main extends Component {
   };
 
   render() { 
-    return (
-      <Grid>
-        <Grid.Column width={6}>
-          <Cities
-            setCity={this.setCity}
-            currentCityId={this.state.currentCityId}
-          />
-        </Grid.Column>
-        <Grid.Column width={10}>
-          <PostDashboard currentCityId={this.state.currentCityId} />
-        </Grid.Column>
-      </Grid>
+    return (      
+      <AuthUserContext.Consumer>
+        {authUser => (
+        <Grid>
+          <Grid.Column width={6}>
+            <Cities
+              setCity={this.setCity}
+              currentCityId={this.state.currentCityId}
+            />
+          </Grid.Column>
+          <Grid.Column width={10}>
+            <PostDashboard currentCityId={this.state.currentCityId} />
+          </Grid.Column>
+        </Grid>
+        )
+        }
+      </AuthUserContext.Consumer>
     );
   }
 }
