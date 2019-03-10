@@ -1,14 +1,36 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../../../../Session';
 import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
+import firebase from 'firebase';
 
 class Post extends Component {
   
     // Write edit function
     // Write delete function
-    deletePost = (e) => {
+    deletePost = (postId) => (e) => {
         e.preventDefault();
+        e.stopPropagation();
+        console.log(postId);
+        firebase
+          .database()
+          .ref(`post/${postId}`)
+          .remove()        
     }
+
+    createPost = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      let postdb = firebase.database().ref('post/');
+      let newPostId = postdb.push().key;
+      firebase
+          .database()
+          .ref(`post/${newPostId}`)
+          .update({
+              title: this.state.title,
+              comments: this.state.comments,
+              cityId: this.props.currentCityId
+          });
+  }
 
     render () {
         return (
@@ -44,7 +66,7 @@ class Post extends Component {
               </Segment>
               <Segment clearing>
                 <Button
-                  // onClick={deletePost(this.id)}
+                  onClick={this.deletePost(this.props.postId)}
                   as="a"
                   color="red"
                   floated="right"
