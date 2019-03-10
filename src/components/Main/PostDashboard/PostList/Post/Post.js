@@ -21,21 +21,6 @@ class Post extends Component {
   //   })
   // }
 
-  createPost = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    let postdb = firebase.database().ref('post/');
-    let newPostId = postdb.push().key;
-    firebase
-        .database()
-        .ref(`post/${newPostId}`)
-        .update({
-            title: this.state.title,
-            comments: this.state.comments,
-            cityId: this.props.currentCityId
-        });
-  }
-
   updatePost = (formData,postId) => (e) => {
     e.preventDefault();
     e.stopPropagation();
