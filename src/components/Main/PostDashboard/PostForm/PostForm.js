@@ -9,7 +9,6 @@ import {
 } from 'semantic-ui-react';
 import { withAuthorization } from '../../../Session';
 import firebase from 'firebase';
-import { parseTwoDigitYear } from 'moment';
 
 class PostForm extends Component {
   state = {
@@ -70,7 +69,6 @@ class PostForm extends Component {
         open={this.state.postModal}
         onClose={this.closePostModal}
         closeIcon>
-        <Divider />
         <Modal.Header>Submit a New Post</Modal.Header>
         <Modal.Content>
           <Form>

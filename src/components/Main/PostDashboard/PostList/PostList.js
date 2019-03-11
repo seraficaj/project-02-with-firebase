@@ -63,6 +63,7 @@ class PostList extends Component {
             </div>
         );
     }
+}
 
 const condition = authUser => !!authUser;
 

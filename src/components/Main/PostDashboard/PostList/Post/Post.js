@@ -13,7 +13,6 @@ import {
 } from "semantic-ui-react";
 import firebase from "firebase";
 import { stringify } from "querystring";
-import Moment from "moment";
 class Post extends Component {
   state = {
     editModal: false,
