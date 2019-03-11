@@ -30,13 +30,7 @@ class PostList extends Component {
       .on("value", function(snap) {
         console.log(snap.val());
         snap.forEach(s => {
-          console.log(
-            s.key,
-            s.val().title,
-            s.val().comments,
-            s.val().cityId,
-            s.val().timeStamp
-          );
+          console.log(s.key, s.val().title, s.val().comments, s.val().cityId);
           posts.push(
             <Post
               postId={s.key}
@@ -53,9 +47,10 @@ class PostList extends Component {
         console.log(thisKeeper.state.cityPosts);
       });
   }
+
   render() {
     console.log("PostList render triggered");
-    //console.log(currentCityId);
+
     return (
       <div id="post-list">
         <h1>Post List</h1>

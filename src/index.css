@@ -3,11 +3,6 @@ body {
 }
 
 /* sign in form styles */
-<<<<<<< HEAD
-/* body > div,
-body > div > div, */
-=======
->>>>>>> 12b53fd8fe97119f1eecf0a1b8f607af2fc79b1e
 body > div > div > div.signin-page {
   height: 100%;
 }
@@ -35,7 +30,7 @@ body > div > div > div.signin-page {
 }
 
 .masthead h1.ui.header {
-  margin-top: 3em;
+  margin-top: 4em;
   margin-bottom: 0;
   font-size: 4em;
   font-weight: normal;
@@ -46,15 +41,9 @@ body > div > div > div.signin-page {
   font-weight: normal;
 }
 
-.footer.segment {
-  padding: 5em 0;
-}
-
 .secondary.inverted.pointing.menu {
   border: none;
 }
-
-/*end home page styles*/
 
 /* navbar styles */
 

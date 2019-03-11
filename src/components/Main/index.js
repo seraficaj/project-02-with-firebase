@@ -7,7 +7,12 @@ import { Grid } from "semantic-ui-react";
 
 class Main extends Component {
   state = {
-    currentCityId: "san-francisco"
+    currentCityId: "san-francisco",
+    currentUserId: (
+      <AuthUserContext.Consumer>
+        {authUser => authUser.uid}
+      </AuthUserContext.Consumer>
+    )
   };
 
   handleInput = e => {
@@ -21,8 +26,11 @@ class Main extends Component {
     this.setState({
       currentCityId: cityId
     });
-    console.log(this.state.currentCityId);
   };
+
+  componentDidMount() {
+    console.log("Main componentDidMount");
+  }
 
   render() {
     return (

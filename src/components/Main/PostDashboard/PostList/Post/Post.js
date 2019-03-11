@@ -15,20 +15,11 @@ import firebase from "firebase";
 import { stringify } from "querystring";
 import Moment from "moment";
 class Post extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: "",
-      comments: "",
-      timeStamp: ""
-    };
-  }
-
-  // state = {
-  //   modalOpen: "false",
-  //   title: "",
-  //   comments: ""
-  // };
+  state = {
+    editModal: false,
+    title: "",
+    comments: ""
+  };
 
   handleInput = e => {
     this.setState({
@@ -36,26 +27,16 @@ class Post extends Component {
     });
   };
 
-  // setModalState = (setting) => {
-  //   this.setState({
-  //     modalState: setting
-  //   })
-  // }
+  openEditModal = () => {
+    this.setState({
+      editModal: true
+    });
+  };
 
-  createPost = e => {
-    e.preventDefault();
-    e.stopPropagation();
-    let postdb = firebase.database().ref("post/");
-    let newPostId = postdb.push().key;
-    firebase
-      .database()
-      .ref(`post/${newPostId}`)
-      .update({
-        title: this.state.title,
-        comments: this.state.comments,
-        cityId: this.props.currentCityId,
-        timeStamp: this.props.timeStamp
-      });
+  closeEditModal = () => {
+    this.setState({
+      editModal: false
+    });
   };
 
   updatePost = (formData, postId) => e => {
@@ -76,9 +57,9 @@ class Post extends Component {
         title: this.state.title,
         comments: this.state.comments,
         cityId: this.props.cityId,
-        timeStamp: this.props.timeStamp
+        timeStamp: this.state.timeStamp
       });
-    // this.setModalState(false);
+    this.closeEditModal();
   };
 
   deletePost = postId => e => {
@@ -90,7 +71,6 @@ class Post extends Component {
       .ref(`post/${postId}`)
       .remove();
   };
-
   render() {
     const { title, comments } = this.state;
     const isEnabled = title.length > 0 && comments.length > 0;
@@ -107,7 +87,7 @@ class Post extends Component {
               <Item.Content>
                 <Item.Header as="a">{this.props.title}</Item.Header>
                 <Item.Description>
-                  Posted by <a> {this.props.username}</a>
+                  Posted by <a> {this.props.author}</a>
                 </Item.Description>
               </Item.Content>
             </Item>
@@ -115,8 +95,7 @@ class Post extends Component {
         </Segment>
         <Segment>
           <span>
-            <Icon name="clock" />
-            {this.props.timeStamp}|
+            <Icon name="clock" /> {this.props.timeStamp}|
             <Icon name="marker" />
             {this.props.cityId}
           </span>
@@ -132,12 +111,19 @@ class Post extends Component {
             floated="right"
             content="Delete"
           />
+
           <Modal
             trigger={
-              <Button color="primary" floated="right">
+              <Button
+                onClick={this.openEditModal}
+                color="primary"
+                floated="right"
+              >
                 Edit
               </Button>
             }
+            open={this.state.editModal}
+            onClose={this.closeEditModal}
             closeIcon
           >
             <Modal.Header>Edit Post</Modal.Header>
@@ -167,7 +153,6 @@ class Post extends Component {
                   positive
                   type="submit"
                   onClick={this.updatePost(this, this.props.postId)}
-                  disabled={!isEnabled}
                 >
                   Save
                 </Button>
@@ -180,6 +165,7 @@ class Post extends Component {
             color="teal"
             floated="right"
             content="View"
+            disabled={!!isEnabled}
           />
         </Segment>
       </Segment.Group>
