@@ -28,7 +28,7 @@ class PostList extends Component {
         .ref('post')
         .orderByChild('cityId')
         .equalTo(this.props.currentCityId)
-        .on('value',function(snap){
+        .on('child_changed',function(snap){
             console.log(snap.val());
                 snap.forEach((s) => {
                 console.log(s.key, s.val().title, s.val().comments, s.val().cityId);
@@ -48,7 +48,21 @@ class PostList extends Component {
 
     render() {
         console.log('PostList render triggered')
-
+        // let posts = [];
+        // this.props.postDB.orderByChild('cityId')
+        // .equalTo(this.props.currentCityId)
+        // .on('value',function(snap){
+        //     console.log(snap.val());
+        //         snap.forEach((s) => {
+        //         console.log(s.key, s.val().title, s.val().comments, s.val().cityId);
+        //             posts.push(<Post 
+        //                 postId={s.key} 
+        //                 cityId={s.val().cityId}
+        //                 title={s.val().title}
+        //                 comments={s.val().comments}
+        //                 />)
+        //     });
+        // });
         return (
             <div id='post-list'>
                 <h1>Post List</h1>
