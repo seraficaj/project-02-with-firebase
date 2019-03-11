@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Header, Image, Segment, Button, Form, Grid } from 'semantic-ui-react';
+import {
+  Message,
+  Header,
+  Image,
+  Segment,
+  Button,
+  Form,
+  Grid
+} from 'semantic-ui-react';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import Firebase from 'firebase';
+import { SignInLink } from '../SignIn';
 
 var selectedFile;
 
@@ -145,6 +154,9 @@ class SignUpFormBase extends Component {
               {error && <p>{error.message}</p>}
             </Segment>
           </Form>
+          <Message>
+            <SignInLink />
+          </Message>
         </Grid.Column>
       </Grid>
     );
@@ -153,7 +165,7 @@ class SignUpFormBase extends Component {
 
 const SignUpLink = () => (
   <p>
-    New to us? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    New to us? <Link to={ROUTES.SIGN_UP}> Sign Up</Link>
   </p>
 );
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
