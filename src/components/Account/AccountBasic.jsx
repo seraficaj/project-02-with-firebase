@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { Segment, Form, Header, Divider, Button } from 'semantic-ui-react';
+import {
+  Card,
+  Image,
+  Segment,
+  Form,
+  Header,
+  Divider,
+  Button
+} from 'semantic-ui-react';
 
 class AccountBasic extends Component {
   render() {
@@ -24,7 +32,12 @@ class AccountBasic extends Component {
             <input type="date" placeholder="Join Date" />
           </Form.Field>
           <Divider />
-          <Button size="large" positive content="Update Profile" />
+          <Button
+            size="large"
+            positive
+            type="submit"
+            content="Update Profile"
+          />
         </Form>
       </div>
     );

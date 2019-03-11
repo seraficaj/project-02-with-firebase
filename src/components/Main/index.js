@@ -25,11 +25,14 @@ class Main extends Component {
     this.setState({
       currentCityId: cityId
     });
-    console.log(this.state.currentCityId);
   };
 
-  render() {
-    console.log(this.state.currentUserId) 
+  componentDidMount(){
+    console.log('Main componentDidMount')
+  }
+
+
+  render() { 
     return (      
       <AuthUserContext.Consumer>
         {authUser => (

@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
-import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
-import { withAuthorization } from '../../../Session';
-import Post from './Post/Post';
-import firebase from 'firebase';
+import React, { Component } from "react";
+import {
+  Segment,
+  Item,
+  Icon,
+  List,
+  Button,
+  Modal,
+  Form,
+  Input
+} from "semantic-ui-react";
+import { withAuthorization } from "../../../Session";
+import Post from "./Post/Post";
+import firebase from "firebase";
 
 class PostList extends Component {
-    state = {
-        cityPosts: []
-    }
+
+  state = {
+    cityPosts: []
+  };
 
     componentDidMount(){
         console.log('PostList componentDidMount triggered');
@@ -34,10 +44,11 @@ class PostList extends Component {
             })
             console.log(thisKeeper.state.cityPosts)
         });
-        
     }
-    render () {
+
+    render() {
         console.log('PostList render triggered')
+
         return (
             <div id='post-list'>
                 <h1>Post List</h1>
@@ -45,6 +56,7 @@ class PostList extends Component {
             </div>
         );
     }
+
 }
 
 const condition = authUser => !!authUser;

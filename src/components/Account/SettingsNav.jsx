@@ -7,7 +7,7 @@ const SettingsNav = () => {
     <Grid.Column width={4}>
       <Menu vertical>
         <Header icon="user" attached inverted color="grey" content="Profile" />
-        <Menu.Item as={NavLink} to="/account">
+        <Menu.Item as={NavLink} to="/my-posts">
           My Posts
         </Menu.Item>
       </Menu>
@@ -18,10 +18,10 @@ const SettingsNav = () => {
           attached
           inverted
           color="grey"
-          content="Account"
+          content="Profile"
         />
         <Menu.Item as={NavLink} to="/account">
-          My Account
+          Account Info
         </Menu.Item>
       </Menu>
     </Grid.Column>
