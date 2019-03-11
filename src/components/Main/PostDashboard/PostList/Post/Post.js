@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withAuthorization } from "../../../../Session";
+import { AuthUserContext, withAuthorization } from "../../../../Session";
 import {
   Segment,
   Item,
@@ -47,7 +47,8 @@ class Post extends Component {
       this.state.title,
       this.state.comments,
       this.props.cityId,
-      this.state.timeStamp
+      this.state.timeStamp,
+      this.props.email
     );
     console.log(formData);
     firebase
@@ -87,7 +88,12 @@ class Post extends Component {
               <Item.Content>
                 <Item.Header as="a">{this.props.title}</Item.Header>
                 <Item.Description>
-                  Posted by <a> {this.props.author}</a>
+                  <p>Posted By: </p>
+                  <AuthUserContext.Consumer>
+                    {authUser => authUser.email}
+                  </AuthUserContext.Consumer>
+
+                  {/* <a> {this.props.author}</a> */}
                 </Item.Description>
               </Item.Content>
             </Item>

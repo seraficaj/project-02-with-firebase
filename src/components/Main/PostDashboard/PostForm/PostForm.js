@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Divider,
   Input,
@@ -6,24 +6,24 @@ import {
   Button,
   Modal,
   Form
-} from 'semantic-ui-react';
-import { withAuthorization } from '../../../Session';
-import firebase from 'firebase';
-import { parseTwoDigitYear } from 'moment';
+} from "semantic-ui-react";
+import { withAuthorization } from "../../../Session";
+import firebase from "firebase";
+import { parseTwoDigitYear } from "moment";
 
 class PostForm extends Component {
   constructor() {
     super();
     this.state = {
-      title: '',
-      comments: ''
+      title: "",
+      comments: ""
     };
   }
 
   createPost = e => {
     e.preventDefault();
     e.stopPropagation();
-    let postdb = firebase.database().ref('post/');
+    let postdb = firebase.database().ref("post/");
     let newPostId = postdb.push().key;
     //let d = new Date();
     //let timeStamp = d.toDateString();
@@ -49,7 +49,7 @@ class PostForm extends Component {
     const isEnabled = title.length > 0 && comments.length > 0;
     return (
       <Modal trigger={<Button color="green">New Post</Button>} closeIcon>
-        {' '}
+        {" "}
         <Divider />
         <Modal.Header>Submit a New Post</Modal.Header>
         <Modal.Content>
