@@ -58,7 +58,6 @@ class PostList extends Component {
         });
         return (
             <div id='post-list'>
-                <h1>Post List</h1>
                 {posts}
             </div>
         );
