@@ -22,7 +22,8 @@ class PostForm extends Component {
       .update({
         title: this.state.title,
         comments: this.state.comments,
-        cityId: this.props.currentCityId
+        cityId: this.props.currentCityId,
+        timeStamp: Date()
       });
   };
   handleInput = e => {

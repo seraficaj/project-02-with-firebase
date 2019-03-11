@@ -55,7 +55,7 @@ class PostList extends Component {
   }
   render() {
     console.log("PostList render triggered");
-    console.log(currentCityId);
+    //console.log(currentCityId);
     return (
       <div id="post-list">
         <h1>Post List</h1>

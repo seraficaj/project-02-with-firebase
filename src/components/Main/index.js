@@ -7,7 +7,7 @@ import { Grid } from "semantic-ui-react";
 
 class Main extends Component {
   state = {
-    currentCityId: ""
+    currentCityId: "san-francisco"
   };
 
   handleInput = e => {

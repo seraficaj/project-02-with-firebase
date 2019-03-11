@@ -54,7 +54,7 @@ class Post extends Component {
         title: this.state.title,
         comments: this.state.comments,
         cityId: this.props.currentCityId,
-        timeStamp: Date.now()
+        timeStamp: this.props.timeStamp
       });
   };
 
