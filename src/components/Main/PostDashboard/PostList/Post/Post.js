@@ -16,6 +16,7 @@ import firebase from "firebase";
 class Post extends Component {
   state = {
     editModal: false,
+    deleteModal: false,
     title: "",
     comments: ""
   }
@@ -35,6 +36,18 @@ class Post extends Component {
   closeEditModal = () => {
     this.setState({
       editModal: false
+    })
+  }
+
+  openDeleteModal = () => {
+    this.setState({
+      deleteModal: true
+    })
+  }
+  
+  closeDeleteModal = () => {
+    this.setState({
+      deleteModal: false
     })
   }
 
@@ -67,7 +80,9 @@ class Post extends Component {
       .database()
       .ref(`post/${postId}`)
       .remove();
+    this.closeDeleteModal();
   };
+  
   render () {
     const { title, comments } = this.state;
     const isEnabled = title.length > 0 && comments.length > 0;
@@ -103,14 +118,35 @@ class Post extends Component {
               </span>
             </Segment>
             <Segment clearing>
-              <Button
-                onClick={this.deletePost(this.props.postId)}
-                as="a"
-                color="red"
-                floated="right"
-                content="Delete"
-              />
 
+              <Modal
+                trigger={
+                <Button
+                  onClick={this.openDeleteModal}
+                  color="red"
+                  floated="right">Delete</Button>
+                }
+                open={this.state.deleteModal}
+                onClose={this.closeDeleteModal}
+                closeIcon
+                >
+                <Modal.Header>Delete this post?</Modal.Header>
+                <Modal.Content>
+                  <h2>{this.props.title}</h2>
+                  <h3>{this.props.comments}</h3>
+                  <Button
+                    onClick={this.deletePost(this.props.postId)}
+                    color="red"
+                    >Yes
+                  </Button>
+                  <Button
+                    onClick={this.closeDeleteModal}
+                    color="grey"
+                    >No
+                  </Button>
+                </Modal.Content>
+              </Modal>
+            
               <Modal 
                 trigger={
                   <Button 
