@@ -6,18 +6,28 @@ import {
   Button,
   Modal,
   Form
-} from "semantic-ui-react";
-import { withAuthorization } from "../../../Session";
-import firebase from "firebase";
-import { parseTwoDigitYear } from "moment";
+
+} from 'semantic-ui-react';
+import { withAuthorization } from '../../../Session';
+import firebase from 'firebase';
 
 class PostForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: "",
-      comments: ""
-    };
+  state = {
+    title: '',
+    comments: '',
+    postModal: false
+  };
+
+  openPostModal = () => {
+    this.setState({
+      postModal: true
+    })
+  }
+
+  closePostModal = () => {
+    this.setState({
+      postModal: false
+    })
   }
 
   createPost = e => {
@@ -37,7 +47,9 @@ class PostForm extends Component {
         cityId: this.props.currentCityId,
         timeStamp: Date()
       });
+    this.closePostModal();
   };
+
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -48,9 +60,17 @@ class PostForm extends Component {
     const { title, comments } = this.state;
     const isEnabled = title.length > 0 && comments.length > 0;
     return (
-      <Modal trigger={<Button color="green">New Post</Button>} closeIcon>
-        {" "}
-        <Divider />
+
+      <Modal 
+        trigger={
+          <Button 
+            onClick={this.openPostModal} 
+            color="green">
+            New Post</Button>
+          } 
+        open={this.state.postModal}
+        onClose={this.closePostModal}
+        closeIcon>
         <Modal.Header>Submit a New Post</Modal.Header>
         <Modal.Content>
           <Form>

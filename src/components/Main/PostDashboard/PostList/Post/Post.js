@@ -13,10 +13,10 @@ import {
 } from "semantic-ui-react";
 import firebase from "firebase";
 import { stringify } from "querystring";
-import Moment from "moment";
 class Post extends Component {
   state = {
     editModal: false,
+    deleteModal: false,
     title: "",
     comments: ""
   };
@@ -39,7 +39,19 @@ class Post extends Component {
     });
   };
 
-  updatePost = (formData, postId) => e => {
+  openDeleteModal = () => {
+    this.setState({
+      deleteModal: true
+    })
+  }
+  
+  closeDeleteModal = () => {
+    this.setState({
+      deleteModal: false
+    })
+  }
+
+  updatePost = (formData,postId) => (e) => {
     e.preventDefault();
     e.stopPropagation();
     console.log(
@@ -71,8 +83,10 @@ class Post extends Component {
       .database()
       .ref(`post/${postId}`)
       .remove();
+    this.closeDeleteModal();
   };
-  render() {
+  
+  render () {
     const { title, comments } = this.state;
     const isEnabled = title.length > 0 && comments.length > 0;
     return (
@@ -118,53 +132,75 @@ class Post extends Component {
             content="Delete"
           />
 
-          <Modal
-            trigger={
-              <Button
-                onClick={this.openEditModal}
-                color="primary"
-                floated="right"
-              >
-                Edit
-              </Button>
-            }
-            open={this.state.editModal}
-            onClose={this.closeEditModal}
-            closeIcon
-          >
-            <Modal.Header>Edit Post</Modal.Header>
-            <Modal.Content>
-              <Form>
-                <Form.Field
-                  control={Input}
-                  label="Post Title"
-                  value={this.props.title}
-                  name="title"
-                  onChange={this.handleInput}
-                  maxLength={200}
-                  minLength={1}
-                />
-                <Form.Field
-                  control="textarea"
-                  rows="5"
-                  control={TextArea}
-                  label="Comments"
-                  placeholder={this.props.comments}
-                  name="comments"
-                  onChange={this.handleInput}
-                  maxLength={200}
-                  minLength={1}
-                />
+              <Modal
+                trigger={
                 <Button
-                  positive
-                  type="submit"
-                  onClick={this.updatePost(this, this.props.postId)}
+                  onClick={this.openDeleteModal}
+                  color="red"
+                  floated="right">Delete</Button>
+                }
+                open={this.state.deleteModal}
+                onClose={this.closeDeleteModal}
+                closeIcon
                 >
-                  Save
-                </Button>
-              </Form>
-            </Modal.Content>
-          </Modal>
+                <Modal.Header>Delete this post?</Modal.Header>
+                <Modal.Content>
+                  <h2>{this.props.title}</h2>
+                  <h3>{this.props.comments}</h3>
+                  <Button
+                    onClick={this.deletePost(this.props.postId)}
+                    color="red"
+                    >Yes
+                  </Button>
+                  <Button
+                    onClick={this.closeDeleteModal}
+                    color="grey"
+                    >No
+                  </Button>
+                </Modal.Content>
+              </Modal>
+            
+              <Modal 
+                trigger={
+                  <Button 
+                    onClick={this.openEditModal}
+                    color="primary" 
+                    floated="right">Edit</Button>
+                  }
+                open={this.state.editModal}
+                onClose={this.closeEditModal}
+                closeIcon
+                >
+                <Modal.Header>Edit Post</Modal.Header>
+                <Modal.Content>
+                  <Form>
+                    <Form.Field
+                      control={Input}
+                      label="Post Title"
+                      value={this.props.title}
+                      name='title'
+                      onChange={this.handleInput}
+                      maxLength={200}
+                      minLength={1}
+                    />
+                    <Form.Field
+                      control="textarea"
+                      rows="5"
+                      control={TextArea}
+                      label="Comments"
+                      placeholder={this.props.comments}
+                      name='comments'
+                      onChange={this.handleInput}
+                      maxLength={200}
+                      minLength={1}
+                    />
+                    <Button positive type="submit" onClick={this.updatePost(this,this.props.postId)}>
+                      Save
+                    </Button>
+                  </Form>
+                </Modal.Content>
+              </Modal>
+
           <Button
             //Opens detailed view of post
             as="a"

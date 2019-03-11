@@ -28,26 +28,24 @@ class Main extends Component {
     });
   };
 
-  componentDidMount() {
-    console.log("Main componentDidMount");
-  }
-
   render() {
-    return (
+    return (      
       <AuthUserContext.Consumer>
         {authUser => (
-          <Grid>
-            <Grid.Column width={6}>
-              <Cities
-                setCity={this.setCity}
-                currentCityId={this.state.currentCityId}
-              />
-            </Grid.Column>
-            <Grid.Column width={10}>
-              <PostDashboard currentCityId={this.state.currentCityId} />
-            </Grid.Column>
-          </Grid>
-        )}
+        <Grid>
+          <Grid.Column width={6}>
+            <Cities
+              setCity={this.setCity}
+              currentCityId={this.state.currentCityId}
+            />
+          </Grid.Column>
+          <Grid.Column width={10}>
+            <PostDashboard currentCityId={this.state.currentCityId} 
+            />
+          </Grid.Column>
+        </Grid>
+        )
+        }
       </AuthUserContext.Consumer>
     );
   }
