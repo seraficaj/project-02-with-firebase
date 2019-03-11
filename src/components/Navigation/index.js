@@ -20,6 +20,7 @@ const NavigationAuth = ({ firebase }) => (
         <img src="/assets/logo.png" alt="logo" />
         Slayfarer
       </Menu.Item>
+      <Menu.Item as={NavLink} to={ROUTES.HOME} name="Home" />
       <Menu.Item as={NavLink} to={ROUTES.MAIN} name="Main" />
       {/* <Menu.Item as={NavLink} to={ROUTES.ACCOUNT} name="Account" /> */}
     </Container>

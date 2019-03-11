@@ -8,7 +8,7 @@ class MyPosts extends Component {
     return (
       <Grid>
         <Grid.Column width={12}>
-          <h1>test</h1>
+          <PostList />
         </Grid.Column>
         <Grid.Column width={4}>
           <SettingsNav />
