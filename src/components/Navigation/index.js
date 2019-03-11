@@ -1,44 +1,97 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
+import { Image, Dropdown, Menu, Container, Button } from 'semantic-ui-react';
 
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
+import { withFirebase } from '../Firebase';
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
-    {authUser =>
-      authUser ? <NavigationAuth /> : <NavigationNonAuth />
-    }
+    {authUser => (authUser ? <NavigationAuth /> : <NavigationNonAuth />)}
   </AuthUserContext.Consumer>
-)
+);
 
-const NavigationAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.MAIN}>Main</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
-    <li>
-      <SignOutButton />
-    </li>
-  </ul>
+const NavigationAuth = ({ firebase }) => (
+  <Menu inverted fixed="top">
+    <Container>
+      <Menu.Item as={Link} to={ROUTES.LANDING} header>
+        <img src="/assets/logo.png" alt="logo" />
+        Slayfarer
+      </Menu.Item>
+      <Menu.Item as={NavLink} to={ROUTES.HOME} name="Home" />
+      <Menu.Item as={NavLink} to={ROUTES.MAIN} name="Cities" />
+      {/* <Menu.Item as={NavLink} to={ROUTES.ACCOUNT} name="Account" /> */}
+    </Container>
+
+    <AuthUserContext.Consumer>
+      {authUser => (
+        <Menu.Item position="right">
+          <Image avatar spaced="right" src="/assets/user.png" />
+          <Dropdown pointing="top left" text={authUser.email}>
+            <Dropdown.Menu>
+              <Dropdown.Item text="New Post" icon="plus" />
+              <Dropdown.Item
+                text="My Posts"
+                icon="calendar"
+                as={NavLink}
+                to={ROUTES.MY_POSTS}
+              />
+              <Dropdown.Item
+                text="Account"
+                icon="user"
+                as={NavLink}
+                to={ROUTES.ACCOUNT}
+              />
+
+              <Dropdown.Item text="Sign Out" icon="power">
+                <SignOutButton />
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Item>
+      )}
+    </AuthUserContext.Consumer>
+  </Menu>
 );
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
-  </ul>
+  <Menu inverted fixed="top">
+    <Container>
+      <Menu.Item as={Link} to={ROUTES.LANDING} header>
+        <img src="/assets/logo.png" alt="logo" />
+        Slayfarer
+      </Menu.Item>
+    </Container>
+    <Menu.Item>
+      <Button
+        basic
+        inverted
+        content="Sign In"
+        as={NavLink}
+        to={ROUTES.SIGN_IN}
+      />
+      <Button
+        basic
+        inverted
+        content="Sign Up"
+        style={{ marginLeft: '0.5em' }}
+        as={NavLink}
+        to={ROUTES.SIGN_UP}
+      />
+    </Menu.Item>
+  </Menu>
 );
 
-export default Navigation;
+//   <ul>
+//     <li>
+//       <Link to={ROUTES.LANDING}>Landing</Link>
+//     </li>
+//     <li>
+//       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+//     </li>
+//   </ul>
+// );
+
+export default withFirebase(Navigation);

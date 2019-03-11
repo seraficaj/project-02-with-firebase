@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import { Button, Header, Image, Form, Segment, Grid } from 'semantic-ui-react';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const PasswordForgetPage = () => (
   <div>
-    <h1>PasswordForget</h1>
     <PasswordForgetForm />
   </div>
 );
 
 const INITIAL_STATE = {
   email: '',
-  error: null,
+  error: null
 };
 
 class PasswordForgetFormBase extends Component {
@@ -48,20 +47,42 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={this.state.email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <Grid
+        textAlign="center"
+        style={{ height: '100%' }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            <Image src="assets/logo.png" /> Forgot your password?
+          </Header>
+          <Form onSubmit={this.onSubmit} size="large">
+            <Segment stacked>
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Email address"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChange}
+                type="text"
+              />
 
-        {error && <p>{error.message}</p>}
-      </form>
+              <Button
+                disabled={isInvalid}
+                type="submit"
+                color="teal"
+                fluid
+                size="large"
+              >
+                Send link
+              </Button>
+              {error && <p>{error.message}</p>}
+            </Segment>
+          </Form>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

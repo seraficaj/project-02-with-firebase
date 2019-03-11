@@ -1,0 +1,23 @@
+.carousel .slider-wrapper.axis-horizontal .slider .slide {
+  height: 60vh;
+  overflow: hidden;
+}
+.carousel .thumbs-wrapper {
+  display: none;
+}
+
+.carousel .slide .img {
+  max-width: 100%;
+  position: absolute;
+  /* top: 0; */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.ui.cards > .card {
+  font-size: 1em;
+  height: 40vh;
+  overflow: scroll;
+}
