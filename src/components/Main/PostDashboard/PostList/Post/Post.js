@@ -14,15 +14,16 @@ import {
 import firebase from "firebase";
 import { stringify } from "querystring";
 import Moment from "moment";
-
 class Post extends Component {
   constructor() {
     super();
     this.state = {
       title: "",
-      comments: ""
+      comments: "",
+      timeStamp: ""
     };
   }
+
   // state = {
   //   modalOpen: "false",
   //   title: "",
@@ -53,7 +54,7 @@ class Post extends Component {
         title: this.state.title,
         comments: this.state.comments,
         cityId: this.props.currentCityId,
-        timeStamp: <Moment format="ddd, hA" />
+        timeStamp: Date.now()
       });
   };
 
@@ -65,7 +66,7 @@ class Post extends Component {
       this.state.title,
       this.state.comments,
       this.props.cityId,
-      <Moment format="ddd, hA" />
+      this.state.timeStamp
     );
     console.log(formData);
     firebase

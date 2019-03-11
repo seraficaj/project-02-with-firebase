@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
-import { Segment, Grid } from 'semantic-ui-react';
-import SettingsNav from './SettingsNav';
+import React, { Component } from "react";
+import { Segment, Grid } from "semantic-ui-react";
+import SettingsNav from "./SettingsNav";
+import Post from "../Main/PostDashboard/PostList/Post/Post";
+import PostList from "../Main/PostDashboard/PostList/PostList";
+import PostDashboard from "../Main/PostDashboard/PostDashboard";
+import firebase from "firebase";
 
 class MyPosts extends Component {
   render() {
     return (
-      <Grid>
-        <Grid.Column width={12}>
-          <h1>test</h1>
-        </Grid.Column>
-        <Grid.Column width={4}>
-          <SettingsNav />
-        </Grid.Column>
-      </Grid>
+      <div>
+        <Post />
+      </div>
     );
   }
 }

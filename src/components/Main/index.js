@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { withAuthorization,AuthUserContext, } from '../Session';
-import Cities from './Cities/Cities';
-import PostDashboard from './PostDashboard/PostDashboard';
-import firebase from 'firebase';
-import {Grid} from 'semantic-ui-react';
+import React, { Component } from "react";
+import { withAuthorization, AuthUserContext } from "../Session";
+import Cities from "./Cities/Cities";
+import PostDashboard from "./PostDashboard/PostDashboard";
+import firebase from "firebase";
+import { Grid } from "semantic-ui-react";
 
 class Main extends Component {
   state = {
-    currentCityId: 'san-francisco',
-  }
+    currentCityId: ""
+  };
 
   handleInput = e => {
     this.setState({
@@ -16,7 +16,7 @@ class Main extends Component {
     });
   };
 
-  setCity = (cityId) => {
+  setCity = cityId => {
     console.log(cityId);
     this.setState({
       currentCityId: cityId
@@ -24,23 +24,22 @@ class Main extends Component {
     console.log(this.state.currentCityId);
   };
 
-  render() { 
-    return (      
+  render() {
+    return (
       <AuthUserContext.Consumer>
         {authUser => (
-        <Grid>
-          <Grid.Column width={6}>
-            <Cities
-              setCity={this.setCity}
-              currentCityId={this.state.currentCityId}
-            />
-          </Grid.Column>
-          <Grid.Column width={10}>
-            <PostDashboard currentCityId={this.state.currentCityId} />
-          </Grid.Column>
-        </Grid>
-        )
-        }
+          <Grid>
+            <Grid.Column width={6}>
+              <Cities
+                setCity={this.setCity}
+                currentCityId={this.state.currentCityId}
+              />
+            </Grid.Column>
+            <Grid.Column width={10}>
+              <PostDashboard currentCityId={this.state.currentCityId} />
+            </Grid.Column>
+          </Grid>
+        )}
       </AuthUserContext.Consumer>
     );
   }
