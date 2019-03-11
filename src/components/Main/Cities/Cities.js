@@ -17,67 +17,64 @@ class Cities extends Component {
   render() {
     return (
       <div>
-        {/* <Header as="h1" attached="top">
-          AttachedHeadr
-        </Header> */}
-        <h1>Cities</h1>
+        <Header as="h2" attached="top">
+          Cities
+        </Header>
         <Router>
-          <Container>
-            <Segment.Group>
-              <Link to="/sanFrancisco">
-                <Segment>
-                  <Image
-                    src="/assets/SF1.jpg"
-                    as="a"
-                    size="massive"
-                    href="/"
-                    label={{
-                      as: 'a',
-                      color: 'black',
-                      content: 'San Francisco',
-                      icon: 'travel',
-                      ribbon: true
-                    }}
-                    onClick={this.setCity('san-francisco')}
-                  />
-                </Segment>
-              </Link>
+          <Segment.Group>
+            <Link to="/sanFrancisco">
               <Segment>
                 <Image
-                  src="/assets/London1.jpg"
+                  src="/assets/SF1.jpg"
                   as="a"
                   size="massive"
                   href="/"
                   label={{
                     as: 'a',
                     color: 'black',
-                    content: 'London',
+                    content: 'San Francisco',
                     icon: 'travel',
                     ribbon: true
                   }}
-                  name="london"
-                  onClick={this.setCity('london')}
+                  onClick={this.setCity('san-francisco')}
                 />
               </Segment>
-              <Segment>
-                <Image
-                  src="/assets/Sydney1.jpg"
-                  as="a"
-                  size="massive"
-                  href="/"
-                  label={{
-                    as: 'a',
-                    color: 'black',
-                    content: 'Sydney',
-                    icon: 'travel',
-                    ribbon: true
-                  }}
-                  name="sydney"
-                  onClick={this.setCity('sydney')}
-                />
-              </Segment>
-            </Segment.Group>
-          </Container>
+            </Link>
+            <Segment>
+              <Image
+                src="/assets/London1.jpg"
+                as="a"
+                size="massive"
+                href="/"
+                label={{
+                  as: 'a',
+                  color: 'black',
+                  content: 'London',
+                  icon: 'travel',
+                  ribbon: true
+                }}
+                name="london"
+                onClick={this.setCity('london')}
+              />
+            </Segment>
+            <Segment>
+              <Image
+                src="/assets/Sydney1.jpg"
+                as="a"
+                size="massive"
+                href="/"
+                label={{
+                  as: 'a',
+                  color: 'black',
+                  content: 'Sydney',
+                  icon: 'travel',
+                  ribbon: true
+                }}
+                name="sydney"
+                onClick={this.setCity('sydney')}
+              />
+            </Segment>
+          </Segment.Group>
         </Router>
       </div>
     );
