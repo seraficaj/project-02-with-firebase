@@ -20,14 +20,6 @@ class Post extends Component {
     comments: ""
   }
 
-  constructor() {
-    super();
-    this.state = {
-      title: "",
-      comments: ""
-    };
-  }
-
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -139,6 +131,8 @@ class Post extends Component {
                       value={this.props.title}
                       name='title'
                       onChange={this.handleInput}
+                      maxLength={200}
+                      minLength={1}
                     />
                     <Form.Field
                       control="textarea"
@@ -148,6 +142,8 @@ class Post extends Component {
                       placeholder={this.props.comments}
                       name='comments'
                       onChange={this.handleInput}
+                      maxLength={200}
+                      minLength={1}
                     />
                     <Button positive type="submit" onClick={this.updatePost(this,this.props.postId)}>
                       Save
@@ -161,81 +157,8 @@ class Post extends Component {
                 color="teal"
                 floated="right"
                 content="View"
+                disabled={!!isEnabled}
               />
-              <Item.Content>
-                <Item.Header as="a">{this.props.title}</Item.Header>
-                <Item.Description>
-                  Posted by <a> {this.props.author}</a>
-                </Item.Description>
-              </Item.Content>
-          </Segment>
-        <Segment>
-          <span>
-            <Icon name="clock" /> 'date'|
-            <Icon name="marker" />
-            {this.props.cityId}
-          </span>
-        </Segment>
-        <Segment secondary>
-          <span>{this.props.comments}</span>
-        </Segment>
-        <Segment clearing>
-          <Button
-            onClick={this.deletePost(this.props.postId)}
-            as="a"
-            color="red"
-            floated="right"
-            content="Delete"
-          />
-          <Modal
-            trigger={
-              <Button color="primary" floated="right">
-                Edit
-              </Button>
-            }
-            closeIcon
-          >
-            <Modal.Header>Edit Post</Modal.Header>
-            <Modal.Content>
-              <Form>
-                <Form.Field
-                  control={Input}
-                  label="Post Title"
-                  value={this.props.title}
-                  name="title"
-                  onChange={this.handleInput}
-                  maxLength={200}
-                  minLength={1}
-                />
-                <Form.Field
-                  control="textarea"
-                  rows="5"
-                  control={TextArea}
-                  label="Comments"
-                  placeholder={this.props.comments}
-                  name="comments"
-                  onChange={this.handleInput}
-                  maxLength={200}
-                  minLength={1}
-                />
-                <Button
-                  positive
-                  type="submit"
-                  onClick={this.updatePost(this, this.props.postId)}
-                  disabled={!!isEnabled}
-                >
-                  Save
-                </Button>
-              </Form>
-            </Modal.Content>
-          </Modal>
-          <Button
-            //Opens detailed view of post
-            as="a"
-            color="teal"
-            floated="right"
-            content="View"
-          />
         </Segment>
       </Segment.Group>
     );
