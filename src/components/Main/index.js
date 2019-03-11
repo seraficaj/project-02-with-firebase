@@ -24,10 +24,11 @@ class Main extends Component {
   };
 
   componentDidMount(){
-    console.log('Component mounted on Main')
+    console.log('Main componentDidMount')
   }
 
-  render() { 
+  render() {
+    console.log('Main rendered') 
     return (
       <Grid>
         <Grid.Column width={6}>
