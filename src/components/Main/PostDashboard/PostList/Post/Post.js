@@ -115,7 +115,7 @@ class Post extends Component {
         </Segment>
         <Segment>
           <span>
-            <Icon name="clock" /> {this.props.timeStamp}|
+            <Icon name="clock" /> {this.state.timeStamp}|
             <Icon name="marker" />
             {this.props.cityId}
           </span>
@@ -124,13 +124,13 @@ class Post extends Component {
           <span>{this.props.comments}</span>
         </Segment>
         <Segment clearing>
-          <Button
+          {/* <Button
             onClick={this.deletePost(this.props.postId)}
             as="a"
             color="red"
             floated="right"
             content="Delete"
-          />
+          /> */}
 
           <Modal
             trigger={
