@@ -12,6 +12,8 @@ import {
   Button
 } from "semantic-ui-react";
 import firebase from "firebase";
+import { stringify } from "querystring";
+import Moment from "moment";
 
 class Post extends Component {
   constructor() {
@@ -50,7 +52,8 @@ class Post extends Component {
       .update({
         title: this.state.title,
         comments: this.state.comments,
-        cityId: this.props.currentCityId
+        cityId: this.props.currentCityId,
+        timeStamp: <Moment format="ddd, hA" />
       });
   };
 
@@ -61,7 +64,8 @@ class Post extends Component {
       postId,
       this.state.title,
       this.state.comments,
-      this.props.cityId
+      this.props.cityId,
+      <Moment format="ddd, hA" />
     );
     console.log(formData);
     firebase
@@ -70,7 +74,8 @@ class Post extends Component {
       .update({
         title: this.state.title,
         comments: this.state.comments,
-        cityId: this.props.cityId
+        cityId: this.props.cityId,
+        timeStamp: this.props.timeStamp
       });
     // this.setModalState(false);
   };
@@ -109,7 +114,8 @@ class Post extends Component {
         </Segment>
         <Segment>
           <span>
-            <Icon name="clock" /> 'date'|
+            <Icon name="clock" />
+            {this.props.timeStamp}|
             <Icon name="marker" />
             {this.props.cityId}
           </span>
