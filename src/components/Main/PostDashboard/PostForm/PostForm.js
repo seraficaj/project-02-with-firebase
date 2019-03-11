@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { Input, TextArea, Button, Modal, Form } from "semantic-ui-react";
-import { withAuthorization } from "../../../Session";
-import firebase from "firebase";
+import React, { Component } from 'react';
+import { Input, TextArea, Button, Modal, Form } from 'semantic-ui-react';
+import { withAuthorization } from '../../../Session';
+import firebase from 'firebase';
 
 class PostForm extends Component {
   constructor() {
     super();
     this.state = {
-      title: "",
-      comments: ""
+      title: '',
+      comments: ''
     };
   }
   createPost = e => {
     e.preventDefault();
     e.stopPropagation();
-    let postdb = firebase.database().ref("post/");
+    let postdb = firebase.database().ref('post/');
     let newPostId = postdb.push().key;
     firebase
       .database()
@@ -52,10 +52,10 @@ class PostForm extends Component {
 
             <Form.Field
               control="textarea"
-              rows="5"
+              rows="3"
               control={TextArea}
               label="Comments"
-              placeholder="Comments"
+              placeholder="(maximum 200 characters)"
               name="comments"
               onChange={this.handleInput}
               //value={this.state.comments}
