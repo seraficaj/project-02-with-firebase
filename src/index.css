@@ -2,6 +2,11 @@ body {
   background-color: rgb(234, 234, 234) !important;
 }
 
+/* sign in form styles */
+body > div > div > div.signin-page {
+  height: 100%;
+}
+
 /*home page styles*/
 
 .masthead {
@@ -47,6 +52,10 @@ body {
 /*end home page styles*/
 
 /* navbar styles */
+
+.ui.menu .dropdown {
+  margin-right: 2.5em;
+}
 
 .ui.menu .item img.logo {
   margin-right: 1.5em;

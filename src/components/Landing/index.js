@@ -9,6 +9,9 @@ const Landing = () => (
   <div>
     <Carousel autoPlay infiniteLoop transitionTime={500} useKeyboardArrows>
       <div>
+        <img src="/assets/SF_C3.jpg" />
+      </div>
+      <div>
         <img src="https://m.theepochtimes.com/assets/uploads/2015/06/10/CheekToCheek_03.jpg" />
         <p className="legend">Gaga gets 'cheeky' in London!</p>
       </div>

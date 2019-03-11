@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { compose } from 'recompose';
-
+import {
+  Grid,
+  Header,
+  Image,
+  Form,
+  Segment,
+  Button,
+  Message
+} from 'semantic-ui-react';
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
-  <div>
-    <h1>Sign In</h1>
+  <div className="signin-page">
     <SignInForm />
-    <PasswordForgetLink />
-    <SignUpLink />
   </div>
 );
 
 const INITIAL_STATE = {
   email: '',
   password: '',
-  error: null,
+  error: null
 };
 
 class SignInFormBase extends Component {
@@ -55,36 +60,75 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+      <Grid
+        textAlign="center"
+        style={{ height: '100%' }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            <Image src="assets/logo.png" /> Welcome back - sign in!
+          </Header>
+          <Form onSubmit={this.onSubmit} size="large">
+            <Segment stacked>
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="E-mail address"
+                name="email"
+                value={email}
+                onChange={this.onChange}
+                type="text"
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                name="password"
+                value={password}
+                onChange={this.onChange}
+              />
 
-        {error && <p>{error.message}</p>}
-      </form>
+              <Button
+                disabled={isInvalid}
+                type="submit"
+                color="teal"
+                fluid
+                size="large"
+              >
+                Sign In
+              </Button>
+              {error && <p>{error.message}</p>}
+            </Segment>
+          </Form>
+          <Message>
+            <SignUpLink />
+          </Message>
+          <Message>
+            <PasswordForgetLink />
+            {/* <a href="#">Forgot Password?</a> */}
+          </Message>
+        </Grid.Column>
+      </Grid>
     );
   }
 }
 
+const SignInLink = () => (
+  <p>
+    Already have an account?
+    <Link to={ROUTES.SIGN_IN}> Sign In</Link>
+  </p>
+);
+
 const SignInForm = compose(
   withRouter,
-  withFirebase,
+  withFirebase
 )(SignInFormBase);
 
 export default SignInPage;
 
-export { SignInForm };
+export { SignInForm, SignInLink };

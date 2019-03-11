@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withAuthorization } from '../Session';
+import { withAuthorization,AuthUserContext, } from '../Session';
 import Cities from './Cities/Cities';
 import PostDashboard from './PostDashboard/PostDashboard';
 import firebase from 'firebase';
@@ -27,20 +27,25 @@ class Main extends Component {
     console.log('Main componentDidMount')
   }
 
-  render() {
-    console.log('Main rendered') 
-    return (
-      <Grid>
-        <Grid.Column width={6}>
-          <Cities
-            setCity={this.setCity}
-            currentCityId={this.state.currentCityId}
-          />
-        </Grid.Column>
-        <Grid.Column width={10}>
-          <PostDashboard currentCityId={this.state.currentCityId} />
-        </Grid.Column>
-      </Grid>
+
+  render() { 
+    return (      
+      <AuthUserContext.Consumer>
+        {authUser => (
+        <Grid>
+          <Grid.Column width={6}>
+            <Cities
+              setCity={this.setCity}
+              currentCityId={this.state.currentCityId}
+            />
+          </Grid.Column>
+          <Grid.Column width={10}>
+            <PostDashboard currentCityId={this.state.currentCityId} />
+          </Grid.Column>
+        </Grid>
+        )
+        }
+      </AuthUserContext.Consumer>
     );
   }
 }
