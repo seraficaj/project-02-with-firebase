@@ -1,22 +1,29 @@
-import React, { Component } from "react";
-import { Input, TextArea, Button, Modal, Form } from "semantic-ui-react";
-import { withAuthorization } from "../../../Session";
-import firebase from "firebase";
-import { parseTwoDigitYear } from "moment";
+import React, { Component } from 'react';
+import {
+  Divider,
+  Input,
+  TextArea,
+  Button,
+  Modal,
+  Form
+} from 'semantic-ui-react';
+import { withAuthorization } from '../../../Session';
+import firebase from 'firebase';
+import { parseTwoDigitYear } from 'moment';
 
 class PostForm extends Component {
   constructor() {
     super();
     this.state = {
-      title: "",
-      comments: ""
+      title: '',
+      comments: ''
     };
   }
 
   createPost = e => {
     e.preventDefault();
     e.stopPropagation();
-    let postdb = firebase.database().ref("post/");
+    let postdb = firebase.database().ref('post/');
     let newPostId = postdb.push().key;
     //let d = new Date();
     //let timeStamp = d.toDateString();
@@ -42,6 +49,8 @@ class PostForm extends Component {
     const isEnabled = title.length > 0 && comments.length > 0;
     return (
       <Modal trigger={<Button color="green">New Post</Button>} closeIcon>
+        {' '}
+        <Divider />
         <Modal.Header>Submit a New Post</Modal.Header>
         <Modal.Content>
           <Form>
@@ -55,7 +64,6 @@ class PostForm extends Component {
               maxLength={200}
               minLength={1}
             />
-
             <Form.Field
               control="textarea"
               rows="3"
@@ -68,7 +76,6 @@ class PostForm extends Component {
               maxLength={200}
               minLength={1}
             />
-
             <Form.Button
               positive
               type="submit"

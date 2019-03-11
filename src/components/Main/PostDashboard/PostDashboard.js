@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../../Session';
+import { Header, Divider } from 'semantic-ui-react';
 import PostForm from './PostForm/PostForm';
 import PostHeader from './PostHeader/PostHeader';
 import PostList from './PostList/PostList';
@@ -8,12 +9,15 @@ class PostDashboard extends Component {
   render() {
     return (
       <div id="post-dashboard">
-        <h1>Post Dashboard</h1>
+        <Header as="h2" attached="top">
+          Post Dashboard
+        </Header>
+        <PostHeader />
         <PostForm
           currentCityId={this.props.currentCityId}
           handleInput={this.props.handleInput}
         />
-        <PostHeader />
+
         <PostList
           currentCityId={this.props.currentCityId}
           posts={this.props.posts}

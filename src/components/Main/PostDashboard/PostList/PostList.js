@@ -1,17 +1,8 @@
-import React, { Component } from "react";
-import {
-  Segment,
-  Item,
-  Icon,
-  List,
-  Button,
-  Modal,
-  Form,
-  Input
-} from "semantic-ui-react";
-import { withAuthorization } from "../../../Session";
-import Post from "./Post/Post";
-import firebase from "firebase";
+import React, { Component } from 'react';
+
+import { withAuthorization } from '../../../Session';
+import Post from './Post/Post';
+import firebase from 'firebase';
 
 class PostList extends Component {
   state = {
@@ -19,15 +10,15 @@ class PostList extends Component {
   };
 
   componentDidMount() {
-    console.log("PostList componentDidMount triggered");
+    console.log('PostList componentDidMount triggered');
     let thisKeeper = this;
     let posts = [];
     firebase
       .database()
-      .ref("post")
-      .orderByChild("cityId")
+      .ref('post')
+      .orderByChild('cityId')
       .equalTo(this.props.currentCityId)
-      .on("value", function(snap) {
+      .on('value', function(snap) {
         console.log(snap.val());
         snap.forEach(s => {
           console.log(s.key, s.val().title, s.val().comments, s.val().cityId);
@@ -49,14 +40,9 @@ class PostList extends Component {
   }
 
   render() {
-    console.log("PostList render triggered");
+    console.log('PostList render triggered');
 
-    return (
-      <div id="post-list">
-        <h1>Post List</h1>
-        {this.state.cityPosts}
-      </div>
-    );
+    return <div id="post-list">{this.state.cityPosts}</div>;
   }
 }
 
