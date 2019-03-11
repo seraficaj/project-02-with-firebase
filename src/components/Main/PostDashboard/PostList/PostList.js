@@ -13,22 +13,24 @@ import { withAuthorization } from "../../../Session";
 import Post from "./Post/Post";
 import firebase from "firebase";
 
+let posts;
 class PostList extends Component {
 
-  state = {
-    cityPosts: []
-  };
+    state = {
+        cityPosts: [],
+        currentCityId: this.props.currentCityId
+    };
 
     componentDidMount(){
         console.log('PostList componentDidMount triggered');
         let thisKeeper = this
-        let posts = [];
+        posts = [];
         firebase
         .database()
         .ref('post')
         .orderByChild('cityId')
         .equalTo(this.props.currentCityId)
-        .on('child_changed',function(snap){
+        .on('value',function(snap){
             console.log(snap.val());
                 snap.forEach((s) => {
                 console.log(s.key, s.val().title, s.val().comments, s.val().cityId);
@@ -42,31 +44,32 @@ class PostList extends Component {
             thisKeeper.setState({
                 cityPosts: posts
             })
-            console.log(thisKeeper.state.cityPosts)
         });
     }
 
     render() {
-        console.log('PostList render triggered')
-        // let posts = [];
-        // this.props.postDB.orderByChild('cityId')
-        // .equalTo(this.props.currentCityId)
-        // .on('value',function(snap){
-        //     console.log(snap.val());
-        //         snap.forEach((s) => {
-        //         console.log(s.key, s.val().title, s.val().comments, s.val().cityId);
-        //             posts.push(<Post 
-        //                 postId={s.key} 
-        //                 cityId={s.val().cityId}
-        //                 title={s.val().title}
-        //                 comments={s.val().comments}
-        //                 />)
-        //     });
-        // });
+        posts = [];
+        firebase
+        .database()
+        .ref('post')
+        .orderByChild('cityId')
+        .equalTo(this.props.currentCityId)
+        .on('value',function(snap){
+            console.log(snap.val());
+                snap.forEach((s) => {
+                console.log(s.key, s.val().title, s.val().comments, s.val().cityId);
+                    posts.push(<Post 
+                        postId={s.key} 
+                        cityId={s.val().cityId}
+                        title={s.val().title}
+                        comments={s.val().comments}
+                        />)
+            });
+        });
         return (
             <div id='post-list'>
                 <h1>Post List</h1>
-                {this.state.cityPosts}
+                {posts}
             </div>
         );
     }

@@ -16,8 +16,6 @@ class PostDashboard extends Component {
         <PostHeader />
         <PostList
           currentCityId={this.props.currentCityId}
-          posts={this.props.posts}
-          postDB={this.props.postDB}
         />
       </div>
     );

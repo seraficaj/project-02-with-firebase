@@ -4,7 +4,6 @@ import Cities from './Cities/Cities';
 import PostDashboard from './PostDashboard/PostDashboard';
 import firebase from 'firebase';
 import {Grid} from 'semantic-ui-react';
-import Post from './PostDashboard/PostList/Post/Post';
 
 class Main extends Component {
   state = {
@@ -27,13 +26,7 @@ class Main extends Component {
     });
   };
 
-  componentDidMount(){
-    console.log('Main componentDidMount')
-  }
-
-
   render() {
-    let postDB = firebase.database().ref('post')
     return (      
       <AuthUserContext.Consumer>
         {authUser => (
@@ -45,8 +38,8 @@ class Main extends Component {
             />
           </Grid.Column>
           <Grid.Column width={10}>
-            <PostDashboard currentCityId={this.state.currentCityId}
-            postDB={postDB} />
+            <PostDashboard currentCityId={this.state.currentCityId} 
+            />
           </Grid.Column>
         </Grid>
         )
