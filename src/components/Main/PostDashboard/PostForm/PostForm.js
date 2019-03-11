@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import { Input, TextArea, Button, Modal, Form } from 'semantic-ui-react';
+import {
+  Divider,
+  Input,
+  TextArea,
+  Button,
+  Modal,
+  Form
+} from 'semantic-ui-react';
 import { withAuthorization } from '../../../Session';
 import firebase from 'firebase';
+import { parseTwoDigitYear } from 'moment';
 
 class PostForm extends Component {
   state = {
@@ -27,13 +35,17 @@ class PostForm extends Component {
     e.stopPropagation();
     let postdb = firebase.database().ref('post/');
     let newPostId = postdb.push().key;
+    //let d = new Date();
+    //let timeStamp = d.toDateString();
+    //console.log(timeStamp);
     firebase
       .database()
       .ref(`post/${newPostId}`)
       .update({
         title: this.state.title,
         comments: this.state.comments,
-        cityId: this.props.currentCityId
+        cityId: this.props.currentCityId,
+        timeStamp: Date()
       });
     this.closePostModal();
   };
@@ -58,6 +70,7 @@ class PostForm extends Component {
         open={this.state.postModal}
         onClose={this.closePostModal}
         closeIcon>
+        <Divider />
         <Modal.Header>Submit a New Post</Modal.Header>
         <Modal.Content>
           <Form>
@@ -71,7 +84,6 @@ class PostForm extends Component {
               maxLength={200}
               minLength={1}
             />
-
             <Form.Field
               control="textarea"
               rows="3"
@@ -84,7 +96,6 @@ class PostForm extends Component {
               maxLength={200}
               minLength={1}
             />
-
             <Form.Button
               positive
               type="submit"

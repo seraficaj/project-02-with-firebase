@@ -12,14 +12,15 @@ import {
   Button
 } from "semantic-ui-react";
 import firebase from "firebase";
-
+import { stringify } from "querystring";
+import Moment from "moment";
 class Post extends Component {
   state = {
     editModal: false,
     deleteModal: false,
     title: "",
     comments: ""
-  }
+  };
 
   handleInput = e => {
     this.setState({
@@ -30,14 +31,14 @@ class Post extends Component {
   openEditModal = () => {
     this.setState({
       editModal: true
-    })
-  }
-  
+    });
+  };
+
   closeEditModal = () => {
     this.setState({
       editModal: false
-    })
-  }
+    });
+  };
 
   openDeleteModal = () => {
     this.setState({
@@ -58,7 +59,8 @@ class Post extends Component {
       postId,
       this.state.title,
       this.state.comments,
-      this.props.cityId
+      this.props.cityId,
+      this.state.timeStamp
     );
     console.log(formData);
     firebase
@@ -67,10 +69,11 @@ class Post extends Component {
       .update({
         title: this.state.title,
         comments: this.state.comments,
-        cityId: this.props.cityId
-      })
+        cityId: this.props.cityId,
+        timeStamp: this.state.timeStamp
+      });
     this.closeEditModal();
-  }
+  };
 
   deletePost = postId => e => {
     e.preventDefault();
@@ -107,7 +110,7 @@ class Post extends Component {
             </Segment>
             <Segment>
               <span>
-                <Icon name="clock" /> 'date'|
+                <Icon name="clock" /> {this.props.timeStamp}|
                 <Icon name="marker" />
                 {this.props.cityId}
               </span>
@@ -187,14 +190,15 @@ class Post extends Component {
                   </Form>
                 </Modal.Content>
               </Modal>
-              <Button
-                //Opens detailed view of post
-                as="a"
-                color="teal"
-                floated="right"
-                content="View"
-                disabled={!!isEnabled}
-              />
+
+          <Button
+            //Opens detailed view of post
+            as="a"
+            color="teal"
+            floated="right"
+            content="View"
+            disabled={!!isEnabled}
+          />
         </Segment>
       </Segment.Group>
     );

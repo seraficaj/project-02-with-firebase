@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Segment, Grid } from 'semantic-ui-react';
-import SettingsNav from './SettingsNav';
-import PostList from '../Main/PostDashboard/PostList/PostList';
+import React, { Component } from "react";
+import { Segment, Grid } from "semantic-ui-react";
+import SettingsNav from "./SettingsNav";
+import PostList from "../Main/PostDashboard/PostList/PostList";
 
 class MyPosts extends Component {
   render() {
     return (
       <Grid>
         <Grid.Column width={12}>
-          <h1>test</h1>
+          <PostList />
         </Grid.Column>
         <Grid.Column width={4}>
           <SettingsNav />

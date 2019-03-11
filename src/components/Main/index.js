@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
-import { withAuthorization,AuthUserContext } from '../Session';
-import Cities from './Cities/Cities';
-import PostDashboard from './PostDashboard/PostDashboard';
-import firebase from 'firebase';
-import {Grid} from 'semantic-ui-react';
+import React, { Component } from "react";
+import { withAuthorization, AuthUserContext } from "../Session";
+import Cities from "./Cities/Cities";
+import PostDashboard from "./PostDashboard/PostDashboard";
+import firebase from "firebase";
+import { Grid } from "semantic-ui-react";
 
 class Main extends Component {
   state = {
-    currentCityId: 'san-francisco',
-    currentUserId: <AuthUserContext.Consumer>
-                    {authUser => (authUser.uid)}
-                  </AuthUserContext.Consumer>
-  }
+    currentCityId: "san-francisco",
+    currentUserId: (
+      <AuthUserContext.Consumer>
+        {authUser => authUser.uid}
+      </AuthUserContext.Consumer>
+    )
+  };
 
   handleInput = e => {
     this.setState({
@@ -19,7 +21,7 @@ class Main extends Component {
     });
   };
 
-  setCity = (cityId) => {
+  setCity = cityId => {
     console.log(cityId);
     this.setState({
       currentCityId: cityId
