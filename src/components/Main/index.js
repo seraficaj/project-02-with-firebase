@@ -24,8 +24,9 @@ class Main extends Component {
   };
 
   componentDidMount(){
-    console.log('Component mounted on Main')
+    console.log('Main componentDidMount')
   }
+
 
   render() { 
     return (      

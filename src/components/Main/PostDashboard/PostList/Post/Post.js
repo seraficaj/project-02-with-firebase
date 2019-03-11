@@ -46,8 +46,6 @@ class Post extends Component {
     })
   }
 
-  
-
   updatePost = (formData,postId) => (e) => {
     e.preventDefault();
     e.stopPropagation();
